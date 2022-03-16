@@ -3,6 +3,10 @@ plugins {
     id 'kotlin-android'
 }
 
+task wrapper(type: Wrapper) {
+    gradleVersion = '7.0.4'
+}
+
 android {
     compileSdk 32
 
