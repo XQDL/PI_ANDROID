@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: org.ktorm:ktorm-core:3.3.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.ktorm/ktorm-core/3.3.0/65594fe4a272d2a767bcfc412e9de769b0a0f255/ktorm-core-3.3.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.ktorm/ktorm-core/3.3.0/101af7b1f0b5fe23f31ddfd6f21a2c675242f6d1/ktorm-core-3.3.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.ktorm/ktorm-core/3.3.0/ceaa9215bc6ee7035f11253875b097f9290f7e2c/ktorm-core-3.3.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
