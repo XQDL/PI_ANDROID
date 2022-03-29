@@ -8,7 +8,7 @@ import androidx.room.Room
 import com.pi.dahora.database.AppDatabase
 import com.pi.dahora.model.User
 
-class MainActivity : AppCompatActivity() {
+class RequirementHistoryStudent : AppCompatActivity() {
 
     private lateinit var _users: List<User>
     private lateinit var _db: AppDatabase
@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_requirement_history_studant)
 
         _db = getConnection()
 
@@ -24,10 +24,21 @@ class MainActivity : AppCompatActivity() {
           //  User(2, "Adailson", "123"))
 
 
+        findViewById<Button>(R.id.att).setOnClickListener{attHistory()}
+
+        try{
+            val userDao = _db.userDao()
+            _users = userDao.getAll()
+
+            findViewById<TextView>(R.id.name).text = _users[0].name
+            findViewById<TextView>(R.id.password).text = _users[0].password
+
+        }catch (e : Exception){
+            println("Unexpected error: $e")
+        }
 
 
 
-        findViewById<Button>(R.id.login_btn).setOnClickListener{ x() }
     }
 
     private fun attHistory(){
@@ -43,24 +54,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun x(){
-        setContentView(R.layout.activity_requirement_history_studant)
-        findViewById<Button>(R.id.att).setOnClickListener{_ -> run { attHistory() } }
 
-        try{
-            val userDao = _db.userDao()
-            _users = userDao.getAll()
-
-
-
-            findViewById<TextView>(R.id.name).text = _users[0].name
-            findViewById<TextView>(R.id.password).text = _users[0].password
-
-        }catch (e : Exception){
-            println("Unexpected error: $e")
-        }
-
-    }
 
 
     private fun getConnection(): AppDatabase {
