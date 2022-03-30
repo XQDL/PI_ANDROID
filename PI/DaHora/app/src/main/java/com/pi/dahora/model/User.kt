@@ -7,8 +7,7 @@ import org.ktorm.schema.int
 import org.ktorm.schema.varchar
 
 
-object Departments : Table<Nothing>("t_department") {
+object User : Table<Nothing>("user") {
     val id = int("id").primaryKey()
     val name = varchar("name")
-    val password = varchar("location")
 }
