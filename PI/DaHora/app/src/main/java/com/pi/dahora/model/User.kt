@@ -1,12 +1,13 @@
-package com.pi.dahora
+package com.pi.dahora.model
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 
-@Entity
-data class User(
-    @PrimaryKey val uid: Int,
-    @ColumnInfo(name = "first_name") val firstName: String?,
-    @ColumnInfo(name = "last_name") val lastName: String?
-)
+import org.ktorm.expression.*
+import org.ktorm.schema.Table
+import org.ktorm.schema.int
+import org.ktorm.schema.varchar
+
+
+object User : Table<Nothing>("user") {
+    val id = int("id").primaryKey()
+    val name = varchar("name")
+}
