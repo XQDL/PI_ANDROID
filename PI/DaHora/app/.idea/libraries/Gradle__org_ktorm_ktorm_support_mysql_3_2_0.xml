@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: org.ktorm:ktorm-support-mysql:3.2.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.ktorm/ktorm-support-mysql/3.2.0/95c6d71f3ee74dc227b08e338d349f782a572337/ktorm-support-mysql-3.2.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.ktorm/ktorm-support-mysql/3.2.0/8348726f375e2dc3f71320fb1ed52387af22937/ktorm-support-mysql-3.2.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.ktorm/ktorm-support-mysql/3.2.0/7697577ea3b17397feec09ba831bcd16bc1f0c1c/ktorm-support-mysql-3.2.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
