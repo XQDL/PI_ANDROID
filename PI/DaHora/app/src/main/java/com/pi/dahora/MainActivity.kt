@@ -1,15 +1,18 @@
 package com.pi.dahora
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-
+import androidx.appcompat.app.AppCompatActivity
 import com.pi.dahora.model.User
 import org.ktorm.database.Database
 import org.ktorm.dsl.from
 import org.ktorm.dsl.select
+import android.widget.Toast
+
+import com.pi.dahora.model.Posts
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.create
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,7 +24,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        getConnection()
+
+        getData()
 
 //        findViewById<Button>(R.id.login_btn).setOnClickListener{ login() }
     }
@@ -62,20 +66,57 @@ class MainActivity : AppCompatActivity() {
 //
 //    }
 
+    fun getData() {
+        val retrofitClient = NetworkUtils
+            .getRetrofitInstance("https://jsonplaceholder.typicode.com")
 
+        val endpoint = retrofitClient.create(Endpoint::class.java)
+        val callback = endpoint.getPosts()
+
+        callback.enqueue(object : Callback<List<Posts>> {
+            override fun onFailure(call: Call<List<Posts>>, t: Throwable) {
+                Toast.makeText(baseContext, t.message, Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onResponse(call: Call<List<Posts>>, response: Response<List<Posts>>) {
+                response.body()?.forEach {
+                    println(response)
+                }
+            }
+        })
+
+    }
     private fun getConnection() {
 //        return Room.databaseBuilder(
 //            applicationContext,
 //            AppDatabase::class.java, "database-name"
 //        ).allowMainThreadQueries().fallbackToDestructiveMigration().build()
 
+        //try{
 
-        val database = Database.connect("jdbc:mysql://localhost:3306/DA_HORA", user = "root", password = "15975328A!")
+//            var hostname = "localhost"
+//            var databaseName = "da_hora"
+//            var username = "root"
+//            var password = "15975328A!"
+
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//            val jdbcUrl = "jdbc:mysql://$hostname:3306/$databaseName?user=$username&password=$password&useSSL=false"
+//            val URL =
+//                "jdbc:mysql://localhost:3306/da_hora?user=$username&password=$password&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=GMT"
+//
+//            //val database = Database.connect("jdbc:mysql://localhost:3306/da_hora?user=root&password=15975328A!&useSSL=false")
+//
+//            val database = Database.connect(jdbcUrl)
+//
+//            for (row in database.from(User).select()) {
+//                println(row[User.name])
+//            }
+//        } catch(e: Exception){
+//            println(e)
+//        }
 
 
-        for (row in database.from(User).select()) {
-            println(row[User.name])
-        }
+
 
 
 

@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "HCX3C5PKVK5ZflFJg3rwWNU63u8a8Y+tbgVSfBq3MKk=",
+  "Source": "API-DaHora",
+  "BasePath": "_content/API-DaHora",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

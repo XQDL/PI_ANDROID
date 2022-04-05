@@ -1,5 +1,7 @@
 package com.pi.dahora.model
 
+import com.google.gson.annotations.SerializedName
+
 data class Posts(
     @SerializedName("userId")
     var userId : Int,
