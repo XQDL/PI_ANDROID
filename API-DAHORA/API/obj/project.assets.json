@@ -10064,26 +10064,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\andre\\.nuget\\packages\\": {}
+    "C:\\Users\\adail\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\andre\\Documents\\GitHub\\PI_ANDROID\\API-DAHORA\\API\\API-DaHora.csproj",
+      "projectUniqueName": "C:\\Users\\adail\\Documents\\Git\\Faculdade\\PI_ANDROID\\API-DAHORA\\API\\API-DaHora.csproj",
       "projectName": "API-DaHora",
-      "projectPath": "C:\\Users\\andre\\Documents\\GitHub\\PI_ANDROID\\API-DAHORA\\API\\API-DaHora.csproj",
-      "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\andre\\Documents\\GitHub\\PI_ANDROID\\API-DAHORA\\API\\obj\\",
+      "projectPath": "C:\\Users\\adail\\Documents\\Git\\Faculdade\\PI_ANDROID\\API-DAHORA\\API\\API-DaHora.csproj",
+      "packagesPath": "C:\\Users\\adail\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\adail\\Documents\\Git\\Faculdade\\PI_ANDROID\\API-DAHORA\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\adail\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -10151,7 +10149,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
