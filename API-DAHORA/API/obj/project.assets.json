@@ -10064,23 +10064,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\vntanmi\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\andre\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vntanmi\\OneDrive - Venturus\\Área de Trabalho\\RankHub-dev_api\\API\\API-DaHora.csproj",
+      "projectUniqueName": "C:\\Users\\andre\\Documents\\GitHub\\PI_ANDROID\\API-DAHORA\\API\\API-DaHora.csproj",
       "projectName": "API-DaHora",
-      "projectPath": "C:\\Users\\vntanmi\\OneDrive - Venturus\\Área de Trabalho\\RankHub-dev_api\\API\\API-DaHora.csproj",
-      "packagesPath": "C:\\Users\\vntanmi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vntanmi\\OneDrive - Venturus\\Área de Trabalho\\RankHub-dev_api\\API\\obj\\",
+      "projectPath": "C:\\Users\\andre\\Documents\\GitHub\\PI_ANDROID\\API-DAHORA\\API\\API-DaHora.csproj",
+      "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\andre\\Documents\\GitHub\\PI_ANDROID\\API-DAHORA\\API\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\vntanmi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10155,7 +10151,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -13,7 +13,7 @@ using API_DaHora.Models;
 namespace API_DaHora.Controllers;
 
 [ApiController]
-[Route("User")]
+[Route("api/[controller]")]
 public class UserController : ControllerBase
 {
     private readonly StudentContext _context;
