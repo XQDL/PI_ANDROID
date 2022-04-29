@@ -33,8 +33,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun getData() {
-        val retrofitClient = NetworkUtils
-            .getRetrofitInstance("https://localhost:5060")
+        val retrofitClient = NetworkUtils.getRetrofitInstance("https://apidahora.herokuapp.com")
 
         val endpoint = retrofitClient.create(Endpoint::class.java)
         val callback = endpoint.getPosts()
