@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using API_DaHora.Models;
+using API_DaHora.Models.DTO;
 
 namespace API_DaHora.Controllers
 {
@@ -26,6 +27,9 @@ namespace API_DaHora.Controllers
         public async Task<ActionResult<IEnumerable<Coordinator>>> GetCoordinator()
         {
             return await _context.Coordinator.ToListAsync();
+
+
+
         }
 
         // GET: api/Coordinator/5
@@ -82,6 +86,15 @@ namespace API_DaHora.Controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetCoordinator", new { id = coordinator.Id }, coordinator);
+        }
+
+        [HttpPost("login")]
+        public async Task<ActionResult<Coordinator>> Login(LoginDTO dto)
+        {
+ 
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetCoordinator", new { id = 1 }, dto);
         }
 
         // DELETE: api/Coordinator/5

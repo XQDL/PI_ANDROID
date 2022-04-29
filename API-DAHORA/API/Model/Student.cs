@@ -1,6 +1,6 @@
 namespace API_DaHora.Models;
 
-public class Student
+public class Student : IUser
 {
     public long Id { get; set; }
     public string? Name { get; set; }

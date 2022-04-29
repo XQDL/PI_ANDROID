@@ -1,6 +1,6 @@
 namespace API_DaHora.Models;
 
-public class Coordinator
+public class Coordinator : IUser
 {
     public long Id { get; set; }
     public string? Name { get; set; }

@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\andre\\Documents\\GitHub\\PI_ANDROID\\API-DAHORA\\API\\API-DaHora.csproj": {}
+    "E:\\Adailson\\Área de Trabalho\\Nova pasta (3)\\API\\API-DaHora.csproj": {}
   },
   "projects": {
-    "C:\\Users\\andre\\Documents\\GitHub\\PI_ANDROID\\API-DAHORA\\API\\API-DaHora.csproj": {
+    "E:\\Adailson\\Área de Trabalho\\Nova pasta (3)\\API\\API-DaHora.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\andre\\Documents\\GitHub\\PI_ANDROID\\API-DAHORA\\API\\API-DaHora.csproj",
+        "projectUniqueName": "E:\\Adailson\\Área de Trabalho\\Nova pasta (3)\\API\\API-DaHora.csproj",
         "projectName": "API-DaHora",
-        "projectPath": "C:\\Users\\andre\\Documents\\GitHub\\PI_ANDROID\\API-DAHORA\\API\\API-DaHora.csproj",
-        "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\andre\\Documents\\GitHub\\PI_ANDROID\\API-DAHORA\\API\\obj\\",
+        "projectPath": "E:\\Adailson\\Área de Trabalho\\Nova pasta (3)\\API\\API-DaHora.csproj",
+        "packagesPath": "C:\\Users\\Adailson\\.nuget\\packages\\",
+        "outputPath": "E:\\Adailson\\Área de Trabalho\\Nova pasta (3)\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Adailson\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -40,6 +38,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.4, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -66,6 +68,14 @@
               "target": "Package",
               "version": "[6.0.1, )"
             },
+            "MySqlConnector": {
+              "target": "Package",
+              "version": "[2.1.8, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
@@ -89,7 +99,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

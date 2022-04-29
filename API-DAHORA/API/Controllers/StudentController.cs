@@ -14,11 +14,11 @@ namespace API_DaHora.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class UserController : ControllerBase
+public class StudentController : ControllerBase
 {
     private readonly StudentContext _context;
 
-    public UserController(StudentContext context)
+    public StudentController(StudentContext context)
     {
         _context = context;
     }
