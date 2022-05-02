@@ -20,5 +20,5 @@ data class Cordinator(
 interface Endpoint {
 
     @GET("api/coordinator")
-    fun getPosts() : Call<List<Cordinator>>
+    fun getCoordinator() : Call<List<Cordinator>>
 }
