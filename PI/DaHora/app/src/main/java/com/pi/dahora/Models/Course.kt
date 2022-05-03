@@ -12,11 +12,11 @@ data class Course(
     @SerializedName("additionalHoursTarget")
     var additionalHoursTarget : Double,
     @SerializedName("coordinator")
-    var coordinator : Coordinator,
+    var coordinator : Cordinator,
 
     )
 
-interface Endpoint {
+interface EndpointCourse {
     @GET("api/course")
     fun getCourses() : Call<List<Course>>
 }

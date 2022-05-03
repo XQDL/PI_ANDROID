@@ -2,7 +2,10 @@ package com.pi.dahora.Models
 
 import com.google.gson.annotations.SerializedName
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Headers
+import retrofit2.http.POST
 
 data class Cordinator(
     @SerializedName("id")
@@ -17,8 +20,10 @@ data class Cordinator(
     var phoneNumber : String
     )
 
-interface Endpoint {
-
-    @GET("api/coordinator")
+interface EndpointCoordinator {
+    @GET("coordinator")
     fun getCoordinator() : Call<List<Cordinator>>
+
+
 }
+
