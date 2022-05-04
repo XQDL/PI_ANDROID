@@ -2,12 +2,9 @@ package com.pi.dahora
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.Gson
 import com.pi.dahora.Models.*
 import com.pi.dahora.Utils.NetworkUtils
 import com.pi.dahora.databinding.ActivityLoginBinding
@@ -23,33 +20,27 @@ class LoginActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         initView()
-
-
-
-
-
     }
 
     private fun initView(){
-
         binding.loginBtn.setOnClickListener {
             val email = binding.email.text.toString()
             val password = binding.password.text.toString()
             getData(email, password)
         }
     }
-    private fun callHomeStudent(){
-        Intent(this, HomeStudant::class.java).apply {
+    private fun callHomeStudent(user : User){
+        val userGson = Gson().toJson(user).toString()
+        Intent(this, HomeStudantActivity::class.java).apply {
+            this.putExtra("aluno",userGson)
             startActivity(this)
         }
     }
     private fun CallHomeCoordinator(){
-        Intent(this, HomeStudant::class.java).apply {
+        Intent(this, HomeStudantActivity::class.java).apply {
             startActivity(this)
         }
     }
-
-
 
     private fun getData(email: String, password: String) {
 
@@ -70,19 +61,15 @@ class LoginActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<User>, response: Response<User>) {
+                val user = response.body()
 
                 //binding.errorTv.text = "NOME:" + response.body()?.name + "\nEMAIL:" + response.body()?.email + "\nSENHA:" + response.body()?.password
-                binding.errorTv.text = response.body()?.toString()
+                binding.errorTv.text = user?.toString()
 
-                Handler().postDelayed({
-                    callHomeStudent()
-                },3000)
-                callHomeStudent()
-
-                //textView.text = textView.text.toString().plus(it.bod
-            // y)
+                if (user != null) {
+                    callHomeStudent(user)
+                }
             }
         })
-
     }
 }
