@@ -1,9 +1,9 @@
-package com.pi.dahora
+package com.pi.dahora.studant
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import com.pi.dahora.R
 
 class HomeStudantActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
