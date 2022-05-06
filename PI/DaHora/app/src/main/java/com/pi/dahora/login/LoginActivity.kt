@@ -14,7 +14,9 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityLoginBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -30,6 +32,7 @@ class LoginActivity : AppCompatActivity() {
             getData(email, password)
         }
     }
+
     private fun callHomeStudent(user : User){
         val userGson = Gson().toJson(user).toString()
         Intent(this, HomeStudantActivity::class.java).apply {
@@ -37,6 +40,7 @@ class LoginActivity : AppCompatActivity() {
             startActivity(this)
         }
     }
+
     private fun CallHomeCoordinator(){
         Intent(this, HomeStudantActivity::class.java).apply {
             startActivity(this)

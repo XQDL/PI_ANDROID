@@ -2,19 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/menu_home"
+        android:id="@+id/createRequerimentFragment"
         android:enabled="true"
         android:icon="@android:drawable/ic_menu_add"
+        android:title="newRequirement" />
+
+    <item
+        android:id="@+id/homeStudantFragment"
+        android:enabled="true"
+        android:icon="@android:drawable/ic_menu_search"
         android:title="home" />
 
     <item
-        android:id="@+id/menu_search"
-        android:enabled="true"
-        android:icon="@android:drawable/ic_menu_search"
-        android:title="search" />
-
-    <item
-        android:id="@+id/menu_historic"
+        android:id="@+id/requerimentHistoryStudantFragment"
         android:enabled="true"
         android:icon="@android:drawable/ic_menu_sort_by_size"
         android:title="historic" />

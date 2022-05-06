@@ -20,19 +20,20 @@
             app:menu="@menu/top_studant_menu"
             app:navigationIcon="@android:drawable/ic_menu_add"
             app:title="@string/app_name" />
-
-
     </com.google.android.material.appbar.AppBarLayout>
 
-    <TextView
-        android:id="@+id/text_xqdl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/menu_studant"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph"
+        app:layout_constraintBottom_toTopOf="@id/menu_studant"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-        tools:text="ahgbdakuvdoua" />
+        app:menu="@menu/bottom_studant_menu" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/menu_studant"
@@ -42,6 +43,4 @@
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_studant_menu" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
