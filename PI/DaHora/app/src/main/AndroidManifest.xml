@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DaHora">
         <activity
-            android:name=".HomeCoordinatorActivity"
+            android:name=".coordinator.HomeCoordinatorActivity"
             android:exported="false" />
         <activity
             android:name=".studant.HomeStudantActivity"
@@ -33,11 +33,6 @@
             android:theme="@style/Theme.DaHora.NoActionBar" />
         <activity
             android:name=".login.LoginActivity"
-            android:exported="false"
-            android:label="@string/title_activity_login_activity"
-            android:theme="@style/Theme.DaHora.NoActionBar" />
-        <activity
-            android:name=".CreateRequirementActivity"
             android:exported="false"
             android:label="@string/title_activity_login_activity"
             android:theme="@style/Theme.DaHora.NoActionBar" />

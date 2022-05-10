@@ -6,13 +6,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.pi.dahora.R
+import com.pi.dahora.databinding.FragmentRequerimentHistoryStudantBinding
 
 class RequerimentHistoryStudantFragment : Fragment() {
+
+    private lateinit var binding: FragmentRequerimentHistoryStudantBinding
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        return inflater.inflate(R.layout.fragment_requeriment_history_studant, container, false)
+
+        binding = FragmentRequerimentHistoryStudantBinding.inflate(inflater)
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        //TODO: Funcionalidades aqui!
+
     }
 }
