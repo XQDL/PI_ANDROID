@@ -12,5 +12,6 @@ public class Requirement
     public DateTime? CreatedTime { get; set; }
     public DateTime? ApprovedTime { get; set; }
     public string? Reason { get; set; }
-    public Student? Student { get; set; }
+    public long? StudentId { get; set; }
+
 }

@@ -9,5 +9,6 @@ public class Student : IUser
     public string? Register { get; set; }
     public double? AdditionalHoursPerformed { get; set; }
     public bool? HasCompletedHours { get; set; }
-    public Course? Course { get; set; }
+    public long? CourseId {get; set;}
+
 }

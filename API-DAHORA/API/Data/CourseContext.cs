@@ -13,5 +13,6 @@ using API_DaHora.Models;
         {
         }
 
+
         public DbSet<API_DaHora.Models.Course> Course { get; set; }
     }

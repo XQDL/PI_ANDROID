@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Adailson\\Área de Trabalho\\Nova pasta (3)\\API\\API-DaHora.csproj": {}
+    "C:\\Users\\T-GAMER\\Documents\\github\\PI_ANDROID\\API-DAHORA\\API\\API-DaHora.csproj": {}
   },
   "projects": {
-    "E:\\Adailson\\Área de Trabalho\\Nova pasta (3)\\API\\API-DaHora.csproj": {
+    "C:\\Users\\T-GAMER\\Documents\\github\\PI_ANDROID\\API-DAHORA\\API\\API-DaHora.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Adailson\\Área de Trabalho\\Nova pasta (3)\\API\\API-DaHora.csproj",
+        "projectUniqueName": "C:\\Users\\T-GAMER\\Documents\\github\\PI_ANDROID\\API-DAHORA\\API\\API-DaHora.csproj",
         "projectName": "API-DaHora",
-        "projectPath": "E:\\Adailson\\Área de Trabalho\\Nova pasta (3)\\API\\API-DaHora.csproj",
-        "packagesPath": "C:\\Users\\Adailson\\.nuget\\packages\\",
-        "outputPath": "E:\\Adailson\\Área de Trabalho\\Nova pasta (3)\\API\\obj\\",
+        "projectPath": "C:\\Users\\T-GAMER\\Documents\\github\\PI_ANDROID\\API-DAHORA\\API\\API-DaHora.csproj",
+        "packagesPath": "C:\\Users\\T-GAMER\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\T-GAMER\\Documents\\github\\PI_ANDROID\\API-DAHORA\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Adailson\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\T-GAMER\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -99,7 +99,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }
