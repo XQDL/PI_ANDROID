@@ -1,6 +1,5 @@
 package com.pi.dahora.studant
 
-import android.app.PendingIntent.getActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
@@ -25,7 +24,7 @@ class HomeStudantActivity : AppCompatActivity() {
 
         val homeFragment = HomeStudantFragment()
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainerView, homeFragment, "")
+        fragmentTransaction.replace(R.id.fragmentContainerViewS, homeFragment, "")
         fragmentTransaction.commit()
 
         navigationViews()
@@ -47,21 +46,21 @@ class HomeStudantActivity : AppCompatActivity() {
     private fun goHistory() {
         val fragment = RequerimentHistoryStudantFragment()
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainerView, fragment, "")
+        fragmentTransaction.replace(R.id.fragmentContainerViewS, fragment, "")
         fragmentTransaction.commit()
     }
 
     private fun goHome() {
         val fragment = HomeStudantFragment()
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainerView, fragment, "")
+        fragmentTransaction.replace(R.id.fragmentContainerViewS, fragment, "")
         fragmentTransaction.commit()
     }
 
     private fun goCreate() {
         val fragment = CreateRequerimentFragment()
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainerView, fragment, "")
+        fragmentTransaction.replace(R.id.fragmentContainerViewS, fragment, "")
         fragmentTransaction.commit()
     }
 }

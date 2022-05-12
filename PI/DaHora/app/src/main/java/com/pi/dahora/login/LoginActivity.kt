@@ -5,10 +5,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
-import com.pi.dahora.studant.HomeStudantActivity
-import com.pi.dahora.Models.*
+import com.pi.dahora.Models.AuthenticateDTO
+import com.pi.dahora.Models.EndpointAuthenticate
+import com.pi.dahora.Models.User
 import com.pi.dahora.Utils.NetworkUtils
+import com.pi.dahora.coordinator.HomeCoordinatorActivity
 import com.pi.dahora.databinding.ActivityLoginBinding
+import com.pi.dahora.studant.HomeStudantActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -47,10 +50,15 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun CallHomeCoordinator(){
-        Intent(this, HomeStudantActivity::class.java).apply {
+    private fun callHomeCoordinator(){
+        Intent(this, HomeCoordinatorActivity::class.java).apply {
             startActivity(this)
         }
+    }
+
+    //Variavel global que pode ser acessada de qualquer lugar
+    companion object{
+        lateinit var userLogged : User
     }
 
     private fun getData(email: String, password: String) {
@@ -78,7 +86,9 @@ class LoginActivity : AppCompatActivity() {
                 binding.errorTv.text = user?.toString()
 
                 if (user != null) {
-                    callHomeStudent(user)
+                    userLogged = user
+                    //callHomeStudent(user)
+                    callHomeCoordinator()
                 }
             }
         })

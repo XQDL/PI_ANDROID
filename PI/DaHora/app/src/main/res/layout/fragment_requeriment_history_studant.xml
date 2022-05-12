@@ -7,9 +7,10 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/TextViewHistory"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/hello_blank_fragment"
-        android:textSize="89sp"/>
+        android:textSize="30sp"/>
 
 </FrameLayout>

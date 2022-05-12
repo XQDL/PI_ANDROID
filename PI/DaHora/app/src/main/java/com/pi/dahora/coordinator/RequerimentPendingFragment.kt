@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.pi.dahora.R
 
-class PendingRequestsFragment : Fragment() {
+class RequerimentPendingFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_coordinator"
+    app:startDestination="@id/homeCoordinatorActivity">
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.pi.dahora.MainActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_main" >
+        <action
+            android:id="@+id/action_mainActivity_to_loginActivity"
+            app:destination="@id/loginActivity" />
+    </activity>
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.pi.dahora.login.LoginActivity"
+        android:label="LoginActivity" >
+        <action
+            android:id="@+id/action_loginActivity_to_homeStudantActivity"
+            app:destination="@id/homeStudantActivity" />
+        <action
+            android:id="@+id/action_loginActivity_to_homeCoordinatorActivity"
+            app:destination="@id/homeCoordinatorActivity" />
+    </activity>
+    <activity
+        android:id="@+id/homeStudantActivity"
+        android:name="com.pi.dahora.studant.HomeStudantActivity"
+        android:label="activity_home_studant"
+        tools:layout="@layout/activity_home_studant" >
+        <action
+            android:id="@+id/action_homeStudantActivity_to_homeStudantFragment"
+            app:destination="@id/homeStudantFragment" />
+        <action
+            android:id="@+id/action_homeStudantActivity_to_requerimentHistoryStudantFragment"
+            app:destination="@id/requerimentHistoryStudantFragment" />
+        <action
+            android:id="@+id/action_homeStudantActivity_to_createRequerimentFragment"
+            app:destination="@id/createRequerimentFragment" />
+
+    </activity>
+    <activity
+        android:id="@+id/homeCoordinatorActivity"
+        android:name="com.pi.dahora.coordinator.HomeCoordinatorActivity"
+        android:label="activity_home_coordinator"
+        tools:layout="@layout/activity_home_coordinator" >
+        <action
+            android:id="@+id/action_homeCoordinatorActivity_to_requerimentHistoryCoordinatorFragment"
+            app:destination="@id/requerimentHistoryCoordinatorFragment" />
+        <action
+            android:id="@+id/action_homeCoordinatorActivity_to_studentsListFragment"
+            app:destination="@id/studentsListFragment" />
+        <action
+            android:id="@+id/action_homeCoordinatorActivity_to_requerimentPendingFragment"
+            app:destination="@id/requerimentPendingFragment" />
+    </activity>
+    <fragment
+        android:id="@+id/createRequerimentFragment"
+        android:name="com.pi.dahora.studant.CreateRequerimentFragment"
+        android:label="fragment_create_requeriment"
+        tools:layout="@layout/fragment_create_requeriment" />
+    <fragment
+        android:id="@+id/requerimentHistoryStudantFragment"
+        android:name="com.pi.dahora.studant.RequerimentHistoryStudantFragment"
+        android:label="fragment_requeriment_history_studant"
+        tools:layout="@layout/fragment_requeriment_history_studant" />
+    <fragment
+        android:id="@+id/homeStudantFragment"
+        android:name="com.pi.dahora.studant.HomeStudantFragment"
+        android:label="fragment_home_studant"
+        tools:layout="@layout/fragment_home_studant" />
+    <fragment
+        android:id="@+id/requerimentPendingFragment"
+        android:name="com.pi.dahora.coordinator.RequerimentPendingFragment"
+        android:label="fragment_pending_requests"
+        tools:layout="@layout/fragment_pending_requests" />
+    <fragment
+        android:id="@+id/requerimentHistoryCoordinatorFragment"
+        android:name="com.pi.dahora.coordinator.RequerimentHistoryCoordinatorFragment"
+        android:label="fragment_requeriment_history_coordinator"
+        tools:layout="@layout/fragment_requeriment_history_coordinator" />
+    <fragment
+        android:id="@+id/studentsListFragment"
+        android:name="com.pi.dahora.coordinator.StudentsListFragment"
+        android:label="fragment_students_list"
+        tools:layout="@layout/fragment_students_list" />
+</navigation>
