@@ -4,6 +4,7 @@ namespace API_DaHora.Models.DTO
     {
 
         public string? Email { get; set; }
+        public string? Matricula { get; set; }
         public string? Password { get; set; }
 
     }

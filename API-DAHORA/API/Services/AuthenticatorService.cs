@@ -38,16 +38,18 @@ public class AuthenticatorService{
     }
 
     public Student? LoginStudent(LoginDTO dto){
-
-        Student? student = _studentContext.student.Where(x => x.Email == dto.Email && x.Password == dto.Password).FirstOrDefault();
+        Student? student;
+        if(string.IsNullOrEmpty(dto.Matricula)){
+            student = _studentContext.student.Where(x => x.Email == dto.Email && x.Password == dto.Password).FirstOrDefault();
+        } else{
+            student = _studentContext.student.Where(x => x.Register == dto.Matricula && x.Password == dto.Password).FirstOrDefault();
+        }
 
         return student;
     }
 
-    public Coordinator? LoginCoordinator(LoginDTO dto){
-        
+    public Coordinator? LoginCoordinator(LoginDTO dto){   
         Coordinator? coordinator = _coordinatorContext.Coordinator.Where(x => x.Email == dto.Email && x.Password == dto.Password).FirstOrDefault();
-
         return coordinator;
     }
 
