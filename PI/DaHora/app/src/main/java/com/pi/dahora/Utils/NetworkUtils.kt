@@ -1,4 +1,4 @@
-package com.pi.dahora.Utils
+package com.pi.dahora.utils
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

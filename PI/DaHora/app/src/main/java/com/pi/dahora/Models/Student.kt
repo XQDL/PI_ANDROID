@@ -19,8 +19,8 @@ data class Student(
     var additionalHoursPerformed : Double,
     @SerializedName("hasCompletedHoursster")
     var hasCompletedHours : Boolean,
-    @SerializedName("Course")
-    var course : Course,
+    @SerializedName("courseId")
+    var course : Long,
     )
 interface EndpointStudent {
     @GET("api/student")

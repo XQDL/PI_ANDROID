@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graphc"
+    app:startDestination="@id/requerimentPendingFragment2">
+
+    <fragment
+        android:id="@+id/requerimentPendingFragment2"
+        android:name="com.pi.dahora.coordinator.RequerimentPendingFragment"
+        android:label="fragment_pending_requests"
+        tools:layout="@layout/fragment_pending_requests" >
+        <action
+            android:id="@+id/action_requerimentPendingFragment2_to_requerimentHistoryCoordinatorFragment2"
+            app:destination="@id/requerimentHistoryCoordinatorFragment2" />
+        <action
+            android:id="@+id/action_requerimentPendingFragment2_to_studentsListFragment2"
+            app:destination="@id/studentsListFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/requerimentHistoryCoordinatorFragment2"
+        android:name="com.pi.dahora.coordinator.RequerimentHistoryCoordinatorFragment"
+        android:label="fragment_requeriment_history_coordinator"
+        tools:layout="@layout/fragment_requeriment_history_coordinator" />
+    <fragment
+        android:id="@+id/studentsListFragment2"
+        android:name="com.pi.dahora.coordinator.StudentsListFragment"
+        android:label="fragment_students_list"
+        tools:layout="@layout/fragment_students_list" />
+</navigation>

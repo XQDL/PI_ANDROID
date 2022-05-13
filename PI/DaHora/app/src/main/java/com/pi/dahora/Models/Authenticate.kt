@@ -12,9 +12,6 @@ data class AuthenticateDTO (
     @SerializedName("password") val password: String
 )
 
-
-
-
 interface EndpointAuthenticate {
     @Headers("Content-Type: application/json")
     @POST("authenticate")

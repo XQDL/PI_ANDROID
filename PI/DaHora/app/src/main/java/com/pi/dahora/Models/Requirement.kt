@@ -2,7 +2,9 @@ package com.pi.dahora.Models
 
 import com.google.gson.annotations.SerializedName
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import java.util.*
 
 data class Requirement(
@@ -17,7 +19,7 @@ data class Requirement(
     @SerializedName("workLoad")
     var workLoad : Double,
     @SerializedName("comments")
-    var comments : String,
+    var comments : String?,
     @SerializedName("attachmentAdress")
     var attachmentAdress : String,
     @SerializedName("institutionName")
@@ -25,14 +27,18 @@ data class Requirement(
     @SerializedName("createdTime")
     var createdTime : Date,
     @SerializedName("approvedTime")
-    var approvedTime : Date,
+    var approvedTime : Date?,
     @SerializedName("reason")
-    var reason : String,
-    @SerializedName("student")
-    var student : Student
+    var reason : String?,
+    @SerializedName("studentId")
+    var student : Long
     )
 
 interface EndpointRequirement {
-    @GET("api/requirement")
+    @GET("requirement")
     fun getRequirements() : Call<List<Requirement>>
+
+    @POST("requirement")
+    fun createRequirement(@Body requeriment: Requirement) : Call<Requirement>
+
 }

@@ -1,17 +1,18 @@
 package com.pi.dahora.login
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.google.gson.Gson
 import com.pi.dahora.Models.AuthenticateDTO
 import com.pi.dahora.Models.EndpointAuthenticate
 import com.pi.dahora.Models.User
-import com.pi.dahora.Utils.NetworkUtils
+import com.pi.dahora.utils.NetworkUtils
 import com.pi.dahora.coordinator.HomeCoordinatorActivity
 import com.pi.dahora.databinding.ActivityLoginBinding
 import com.pi.dahora.studant.HomeStudantActivity
+import com.pi.dahora.utils.LoginUser
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -38,59 +39,81 @@ class LoginActivity : AppCompatActivity() {
             else{
                 getData(email, password)
             }
-
         }
     }
 
-    private fun callHomeStudent(user : User){
-        val userGson = Gson().toJson(user).toString()
+    private fun callHomeStudent(){
         Intent(this, HomeStudantActivity::class.java).apply {
-            this.putExtra("aluno",userGson)
             startActivity(this)
+            finish()
         }
     }
 
     private fun callHomeCoordinator(){
         Intent(this, HomeCoordinatorActivity::class.java).apply {
             startActivity(this)
+            finish()
         }
     }
 
-    //Variavel global que pode ser acessada de qualquer lugar
-    companion object{
-        lateinit var userLogged : User
-    }
 
     private fun getData(email: String, password: String) {
 
         binding.errorTv.visibility = View.VISIBLE
         binding.errorTv.text = "AUTENTICANDO..."
+        binding.errorTv.setTextColor(Color.GREEN)
+        binding.progressBarLogin.visibility = View.VISIBLE
 
         val retrofitClient = NetworkUtils.getRetrofitInstance("https://apidahora.herokuapp.com/api/")
-
         val endpoint = retrofitClient.create(EndpointAuthenticate::class.java)
-
         val auth = AuthenticateDTO(email, password)
-
         val callback = endpoint.authenticate(auth)
 
         callback.enqueue(object : Callback<User> {
             override fun onFailure(call: Call<User>, t: Throwable) {
-                binding.errorTv.text = "Falha de Login! Tente novamente!"
+                binding.errorTv.setTextColor(Color.RED)
+                binding.progressBarLogin.visibility = View.GONE
+                binding.errorTv.text = "Desculpe, ocorreu um erro interno no servidor!"
             }
 
             override fun onResponse(call: Call<User>, response: Response<User>) {
+
+                val erroMensage = when(response.raw().code()){
+                    200 -> ""
+                    404 -> "E-mail ou senha inválidos"
+                    500 -> "Desculpe, ocorreu um erro interno no servidor!"
+                    else -> "Ops, ocorreu um erro inesperado!"
+                }
+
+                showError(erroMensage)
+
                 val user = response.body()
 
-                //binding.errorTv.text = "NOME:" + response.body()?.name + "\nEMAIL:" + response.body()?.email + "\nSENHA:" + response.body()?.password
-                binding.errorTv.text = user?.toString()
-
                 if (user != null) {
-                    userLogged = user
-                    //callHomeStudent(user)
-                    callHomeCoordinator()
+                    callHome(user)
+                }
+                else{
+                    binding.errorTv.text = "Falha de Login! Tente novamente!"
                 }
             }
         })
+    }
+
+    private fun callHome(user: User){
+
+        LoginUser.userLogged = user
+
+        if (user.phoneNumber != null){
+            callHomeCoordinator()
+        }
+        else {
+            callHomeStudent()
+        }
+    }
+
+    private fun showError(msg: String){
+        binding.errorTv.setTextColor(Color.RED)
+        binding.progressBarLogin.visibility = View.GONE
+        binding.errorTv.text = msg
     }
 }

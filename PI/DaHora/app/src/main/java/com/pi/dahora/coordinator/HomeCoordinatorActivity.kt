@@ -20,7 +20,7 @@ class HomeCoordinatorActivity : AppCompatActivity() {
 
         val requerimentHistoryFragment = RequerimentHistoryCoordinatorFragment()
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainerViewS, requerimentHistoryFragment, "")
+        fragmentTransaction.replace(R.id.fragmentContainerViewC, requerimentHistoryFragment, "")
         fragmentTransaction.commit()
 
         navigationViews()
@@ -42,21 +42,21 @@ class HomeCoordinatorActivity : AppCompatActivity() {
     private fun goHistory() {
         val fragment = RequerimentHistoryCoordinatorFragment()
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainerViewS, fragment, "")
+        fragmentTransaction.replace(R.id.fragmentContainerViewC, fragment, "")
         fragmentTransaction.commit()
     }
 
     private fun goHome() {
         val fragment = StudentsListFragment()
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainerViewS, fragment, "")
+        fragmentTransaction.replace(R.id.fragmentContainerViewC, fragment, "")
         fragmentTransaction.commit()
     }
 
     private fun goCreate() {
         val fragment = RequerimentPendingFragment()
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainerViewS, fragment, "")
+        fragmentTransaction.replace(R.id.fragmentContainerViewC, fragment, "")
         fragmentTransaction.commit()
     }
 }

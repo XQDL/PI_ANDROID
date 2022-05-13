@@ -6,8 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.pi.dahora.R
+import com.pi.dahora.databinding.FragmentRequerimentHistoryCoordinatorBinding
+import com.pi.dahora.databinding.FragmentViewRequisitionBinding
 
 class RequerimentHistoryCoordinatorFragment : Fragment() {
+    private lateinit var binding: FragmentRequerimentHistoryCoordinatorBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -16,8 +19,9 @@ class RequerimentHistoryCoordinatorFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        binding = FragmentRequerimentHistoryCoordinatorBinding.inflate(layoutInflater)
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_requeriment_history_coordinator, container, false)
+        return binding.root
     }
 
 }

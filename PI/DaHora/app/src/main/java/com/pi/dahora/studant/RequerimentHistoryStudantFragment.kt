@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.pi.dahora.R
 import com.pi.dahora.databinding.FragmentRequerimentHistoryStudantBinding
 import com.pi.dahora.login.LoginActivity
+import com.pi.dahora.utils.LoginUser
 
 class RequerimentHistoryStudantFragment : Fragment() {
 
@@ -28,7 +29,7 @@ class RequerimentHistoryStudantFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         //Exmplo do dado de usuario logado vindo da variavel global
-        binding.TextViewHistory.text = LoginActivity.userLogged.toString()
+        binding.TextViewHistory.text = LoginUser.userLogged.toString()
 
         //TODO: Funcionalidades aqui!
 
