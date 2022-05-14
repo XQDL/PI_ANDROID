@@ -34,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
             val email = binding.email.text.toString()
             val password = binding.password.text.toString()
             if((email == "") and (password == "")){
-                getData("123","123")
+                getData("321","321")
             }
             else{
                 getData(email, password)
@@ -64,9 +64,11 @@ class LoginActivity : AppCompatActivity() {
         binding.errorTv.setTextColor(Color.GREEN)
         binding.progressBarLogin.visibility = View.VISIBLE
 
+        val matricula = null
+
         val retrofitClient = NetworkUtils.getRetrofitInstance("https://apidahora.herokuapp.com/api/")
         val endpoint = retrofitClient.create(EndpointAuthenticate::class.java)
-        val auth = AuthenticateDTO(email, password)
+        val auth = AuthenticateDTO(email, password, matricula)
         val callback = endpoint.authenticate(auth)
 
         callback.enqueue(object : Callback<User> {

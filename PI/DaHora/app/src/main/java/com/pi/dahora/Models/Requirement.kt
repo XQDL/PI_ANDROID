@@ -9,30 +9,35 @@ import java.util.*
 
 data class Requirement(
     @SerializedName("id")
-    var id : Int,
+    var id: Int,
     @SerializedName("tittle")
-    var tittle : String,
+    var tittle: String,
     @SerializedName("startDate")
-    var startDate : Date,
+    var startDate: String,
     @SerializedName("endDate")
-    var endDate : Date,
+    var endDate: String,
     @SerializedName("workLoad")
-    var workLoad : Double,
+    var workLoad: Double,
     @SerializedName("comments")
-    var comments : String?,
+    var comments: String?,
     @SerializedName("attachmentAdress")
-    var attachmentAdress : String,
+    var attachmentAdress: String,
     @SerializedName("institutionName")
-    var institutionName : String,
+    var institutionName: String,
     @SerializedName("createdTime")
-    var createdTime : Date,
+    var createdTime: String,
     @SerializedName("approvedTime")
-    var approvedTime : Date?,
+    var approvedTime: String?,
     @SerializedName("reason")
-    var reason : String?,
+    var reason: String?,
     @SerializedName("studentId")
-    var student : Long
-    )
+    var student: Long,
+    @SerializedName("attachment")
+    var attachment: ByteArray?,
+    @SerializedName("type")
+    var type: String?,
+)
+
 
 interface EndpointRequirement {
     @GET("requirement")

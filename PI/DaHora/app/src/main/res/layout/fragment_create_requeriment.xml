@@ -58,43 +58,31 @@
             android:textSize="20sp"
             app:layout_constraintTop_toBottomOf="@id/tdTittleRequeriment" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tip_date_start"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <Button
+            android:id="@+id/datePickerButtonStart"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="5dp"
-            app:layout_constraintEnd_toStartOf="@id/tip_date_end"
+            android:text="JAN 01 2020"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            style="?android:spinnerStyle"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_date_curse">
+            app:layout_constraintTop_toBottomOf="@id/tv_date_curse"
+            app:layout_constraintEnd_toStartOf="@id/datePickerButtonEnd"
+            app:layout_constraintBottom_toTopOf="@id/view_bar" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Inicio"
-                android:inputType="date" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tip_date_end"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <Button
+            android:id="@+id/datePickerButtonEnd"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="5dp"
-            android:hint="Termino"
+            android:text="JAN 01 2020"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            style="?android:spinnerStyle"
+            app:layout_constraintStart_toEndOf="@id/datePickerButtonStart"
+            app:layout_constraintTop_toTopOf="@id/datePickerButtonStart"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tip_date_start"
-            app:layout_constraintTop_toBottomOf="@id/tv_date_curse">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="date" />
-
-        </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintBottom_toBottomOf="@id/datePickerButtonStart"/>
 
         <View
             android:id="@+id/view_bar"
@@ -102,7 +90,7 @@
             android:layout_height="1dp"
             android:layout_margin="16dp"
             android:background="@color/green_200"
-            app:layout_constraintTop_toBottomOf="@id/tip_date_start" />
+            app:layout_constraintTop_toBottomOf="@id/datePickerButtonEnd" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tdWorkLoad"
