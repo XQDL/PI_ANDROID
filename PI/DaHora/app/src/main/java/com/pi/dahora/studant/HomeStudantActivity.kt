@@ -19,19 +19,15 @@ class HomeStudantActivity : AppCompatActivity() {
 
         val dado = intent.getSerializableExtra("aluno")
 
-        (binding.menuStudant).selectedItemId = R.id.homeStudantFragment
+        (binding.bottomNavigationStudent).selectedItemId = R.id.homeStudantFragment
 
-
-        val homeFragment = HomeStudantFragment()
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainerViewS, homeFragment, "")
-        fragmentTransaction.commit()
+        goHistory()
 
         navigationViews()
     }
 
     private fun navigationViews() {
-        binding.menuStudant.apply {
+        binding.bottomNavigationStudent.apply {
             setOnItemSelectedListener { item ->
                 when (item.itemId) {
                     R.id.createRequerimentFragment -> goCreate()
@@ -44,23 +40,29 @@ class HomeStudantActivity : AppCompatActivity() {
     }
 
     private fun goHistory() {
+        binding.toolbarStudent.title = "Histórico"
+
         val fragment = RequerimentHistoryStudantFragment()
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainerViewS, fragment, "")
+        fragmentTransaction.replace(R.id.fragmentContainerView_Student, fragment, "")
         fragmentTransaction.commit()
     }
 
     private fun goHome() {
+        binding.toolbarStudent.title = "DaHora"
+
         val fragment = HomeStudantFragment()
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainerViewS, fragment, "")
+        fragmentTransaction.replace(R.id.fragmentContainerView_Student, fragment, "")
         fragmentTransaction.commit()
     }
 
     private fun goCreate() {
+        binding.toolbarStudent.title = "Nova Requisição"
+
         val fragment = CreateRequerimentFragment()
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainerViewS, fragment, "")
+        fragmentTransaction.replace(R.id.fragmentContainerView_Student, fragment, "")
         fragmentTransaction.commit()
     }
 }

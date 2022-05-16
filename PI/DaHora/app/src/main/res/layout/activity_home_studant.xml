@@ -7,21 +7,38 @@
     android:layout_height="match_parent"
     tools:context=".studant.HomeStudantActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar_Student"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_Student"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            tools:title="@string/app_name"
+            app:titleTextColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerViewS"
+        android:id="@+id/fragmentContainerView_Student"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph"
-        app:layout_constraintBottom_toTopOf="@id/menu_studant"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation_Student"
+        app:layout_constraintTop_toBottomOf="@id/appBar_Student"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_studant_menu" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/menu_studant"
+        android:id="@+id/bottomNavigation_Student"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="22dp"

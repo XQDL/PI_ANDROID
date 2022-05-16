@@ -32,4 +32,15 @@
     <string name="atualizar">Atualizar</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Início</string>
+    <string name="requirement">Requerimento</string>
+    <string name="historic">Histórico</string>
+    <string name="create_requirement">Criar Requerimento</string>
+    <string name="tittle_requisition">Titulo da Atividade</string>
+    <string name="date_held">Data de Realização</string>
+    <string name="work_load">Garga horaria</string>
+    <string name="name_institution">Nome da Intituição</string>
+    <string name="comments">Observações...</string>
+    <string name="attach_file">Anexar Arquivo</string>
+    <string name="send">Enviar</string>
 </resources>

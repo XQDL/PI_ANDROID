@@ -26,5 +26,5 @@
         android:id="@+id/createRequerimentFragment"
         android:name="com.pi.dahora.studant.CreateRequerimentFragment"
         android:label="CreateRequerimentFragment"
-        tools:layout="@layout/fragment_create_requeriment"/>
+        tools:layout="@layout/fragment_create_requirement"/>
 </navigation>

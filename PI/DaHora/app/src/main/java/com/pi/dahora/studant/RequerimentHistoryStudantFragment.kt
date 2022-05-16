@@ -28,9 +28,6 @@ class RequerimentHistoryStudantFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //Exmplo do dado de usuario logado vindo da variavel global
-        binding.TextViewHistory.text = LoginUser.userLogged.toString()
-
         //TODO: Funcionalidades aqui!
 
     }

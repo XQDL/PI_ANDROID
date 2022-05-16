@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.pi.dahora.Models.AuthenticateDTO
 import com.pi.dahora.Models.EndpointAuthenticate
 import com.pi.dahora.Models.User
+import com.pi.dahora.R
 import com.pi.dahora.utils.NetworkUtils
 import com.pi.dahora.coordinator.HomeCoordinatorActivity
 import com.pi.dahora.databinding.ActivityLoginBinding
@@ -30,9 +31,9 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun initView(){
-        binding.loginBtn.setOnClickListener {
-            val email = binding.email.text.toString()
-            val password = binding.password.text.toString()
+        binding.ButtonLogin.setOnClickListener {
+            val email = binding.EditTextEmailLogin.text.toString()
+            val password = binding.EditTextPasswordLogin.text.toString()
             if((email == "") and (password == "")){
                 getData("321","321")
             }
@@ -59,10 +60,10 @@ class LoginActivity : AppCompatActivity() {
 
     private fun getData(email: String, password: String) {
 
-        binding.errorTv.visibility = View.VISIBLE
-        binding.errorTv.text = "AUTENTICANDO..."
-        binding.errorTv.setTextColor(Color.GREEN)
-        binding.progressBarLogin.visibility = View.VISIBLE
+        binding.TextViewErrorLogin.visibility = View.VISIBLE
+        binding.TextViewErrorLogin.text = "AUTENTICANDO..."
+        binding.TextViewErrorLogin.setTextColor(resources.getColor(R.color.green_200))
+        binding.ProgressBarLogin.visibility = View.VISIBLE
 
         val matricula = null
 
@@ -73,9 +74,9 @@ class LoginActivity : AppCompatActivity() {
 
         callback.enqueue(object : Callback<User> {
             override fun onFailure(call: Call<User>, t: Throwable) {
-                binding.errorTv.setTextColor(Color.RED)
-                binding.progressBarLogin.visibility = View.GONE
-                binding.errorTv.text = "Desculpe, ocorreu um erro interno no servidor!"
+                binding.TextViewErrorLogin.setTextColor(Color.RED)
+                binding.ProgressBarLogin.visibility = View.GONE
+                binding.TextViewErrorLogin.text = "Desculpe, ocorreu um erro interno no servidor!"
             }
 
             override fun onResponse(call: Call<User>, response: Response<User>) {
@@ -95,7 +96,7 @@ class LoginActivity : AppCompatActivity() {
                     callHome(user)
                 }
                 else{
-                    binding.errorTv.text = "Falha de Login! Tente novamente!"
+                    binding.TextViewErrorLogin.text = "Falha de Login! Tente novamente!"
                 }
             }
         })
@@ -114,8 +115,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun showError(msg: String){
-        binding.errorTv.setTextColor(Color.RED)
-        binding.progressBarLogin.visibility = View.GONE
-        binding.errorTv.text = msg
+        binding.TextViewErrorLogin.setTextColor(Color.RED)
+        binding.ProgressBarLogin.visibility = View.GONE
+        binding.TextViewErrorLogin.text = msg
     }
 }

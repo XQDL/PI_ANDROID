@@ -5,9 +5,6 @@ import android.os.Bundle
 import androidx.fragment.app.FragmentTransaction
 import com.pi.dahora.R
 import com.pi.dahora.databinding.ActivityHomeCoordinatorBinding
-import com.pi.dahora.studant.CreateRequerimentFragment
-import com.pi.dahora.studant.HomeStudantFragment
-import com.pi.dahora.studant.RequerimentHistoryStudantFragment
 
 class HomeCoordinatorActivity : AppCompatActivity() {
 
@@ -20,14 +17,14 @@ class HomeCoordinatorActivity : AppCompatActivity() {
 
         val requerimentHistoryFragment = RequerimentHistoryCoordinatorFragment()
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainerViewC, requerimentHistoryFragment, "")
+        fragmentTransaction.replace(R.id.fragmentContainerView_Coordinator, requerimentHistoryFragment, "")
         fragmentTransaction.commit()
 
         navigationViews()
     }
 
     private fun navigationViews() {
-        binding.menuCoordinator.apply {
+        binding.bottomNavigationCoordinator.apply {
             setOnItemSelectedListener { item ->
                 when (item.itemId) {
                     R.id.requerimentPendingFragment -> goCreate()
@@ -42,21 +39,21 @@ class HomeCoordinatorActivity : AppCompatActivity() {
     private fun goHistory() {
         val fragment = RequerimentHistoryCoordinatorFragment()
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainerViewC, fragment, "")
+        fragmentTransaction.replace(R.id.fragmentContainerView_Coordinator, fragment, "")
         fragmentTransaction.commit()
     }
 
     private fun goHome() {
         val fragment = StudentsListFragment()
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainerViewC, fragment, "")
+        fragmentTransaction.replace(R.id.fragmentContainerView_Coordinator, fragment, "")
         fragmentTransaction.commit()
     }
 
     private fun goCreate() {
         val fragment = RequerimentPendingFragment()
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainerViewC, fragment, "")
+        fragmentTransaction.replace(R.id.fragmentContainerView_Coordinator, fragment, "")
         fragmentTransaction.commit()
     }
 }

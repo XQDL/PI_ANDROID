@@ -4,20 +4,19 @@
     <item
         android:id="@+id/createRequerimentFragment"
         android:enabled="true"
-        android:icon="@android:drawable/ic_menu_add"
-        android:title="newRequirement" />
+        android:icon="@drawable/ic_baseline_add_24"
+        android:title="@string/requirement" />
 
     <item
         android:id="@+id/homeStudantFragment"
         android:enabled="true"
-        android:icon="@android:drawable/ic_menu_search"
-        android:title="home" />
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/home" />
 
     <item
         android:id="@+id/requerimentHistoryStudantFragment"
         android:enabled="true"
         android:icon="@android:drawable/ic_menu_sort_by_size"
-        android:title="historic" />
-
+        android:title="@string/historic" />
 
 </menu>

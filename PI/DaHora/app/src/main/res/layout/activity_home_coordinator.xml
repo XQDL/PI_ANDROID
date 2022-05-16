@@ -8,26 +8,25 @@
     tools:context=".coordinator.HomeCoordinatorActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerViewC"
+        android:id="@+id/fragmentContainerView_Coordinator"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graphc"
-        app:layout_constraintBottom_toTopOf="@id/menu_coordinator"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation_Coordinator"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_coordinator_menu" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/menu_coordinator"
+        android:id="@+id/bottomNavigation_Coordinator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="22dp"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_coordinator_menu" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

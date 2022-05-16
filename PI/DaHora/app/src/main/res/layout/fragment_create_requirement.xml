@@ -12,12 +12,12 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/tv_title_requeriment"
+            android:id="@+id/TextView_tittle_CreatRequirement"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="5dp"
-            android:text="Criar Requisição"
+            android:text="@string/create_requirement"
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textSize="32sp"
@@ -28,16 +28,16 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tdTittleRequeriment"
+            android:id="@+id/EditText_tittleRequirement"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="5dp"
-            android:hint="Titulo da Atividade"
+            android:hint="@string/tittle_requisition"
             app:boxBackgroundColor="@null"
             app:errorEnabled="true"
-            app:layout_constraintTop_toBottomOf="@id/tv_title_requeriment">
+            app:layout_constraintTop_toBottomOf="@id/TextView_tittle_CreatRequirement">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -47,60 +47,60 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/tv_date_curse"
+            android:id="@+id/TextView_date_curse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="5dp"
-            android:text="Data de Realização"
+            android:text="@string/date_held"
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textSize="20sp"
-            app:layout_constraintTop_toBottomOf="@id/tdTittleRequeriment" />
+            app:layout_constraintTop_toBottomOf="@id/EditText_tittleRequirement" />
 
         <Button
-            android:id="@+id/datePickerButtonStart"
+            android:id="@+id/Button_datePickerStart"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="JAN 01 2020"
+            tools:text="JAN 01 2020"
             android:textSize="20sp"
             android:textColor="@color/black"
             style="?android:spinnerStyle"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_date_curse"
-            app:layout_constraintEnd_toStartOf="@id/datePickerButtonEnd"
-            app:layout_constraintBottom_toTopOf="@id/view_bar" />
+            app:layout_constraintTop_toBottomOf="@id/TextView_date_curse"
+            app:layout_constraintEnd_toStartOf="@id/Button_datePickerEnd"
+            app:layout_constraintBottom_toTopOf="@id/View_bar_createRiquirement" />
 
         <Button
-            android:id="@+id/datePickerButtonEnd"
+            android:id="@+id/Button_datePickerEnd"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="JAN 01 2020"
+            tools:text="JAN 01 2020"
             android:textSize="20sp"
             android:textColor="@color/black"
             style="?android:spinnerStyle"
-            app:layout_constraintStart_toEndOf="@id/datePickerButtonStart"
-            app:layout_constraintTop_toTopOf="@id/datePickerButtonStart"
+            app:layout_constraintStart_toEndOf="@id/Button_datePickerStart"
+            app:layout_constraintTop_toTopOf="@id/Button_datePickerStart"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/datePickerButtonStart"/>
+            app:layout_constraintBottom_toBottomOf="@id/Button_datePickerStart"/>
 
         <View
-            android:id="@+id/view_bar"
+            android:id="@+id/View_bar_createRiquirement"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_margin="16dp"
             android:background="@color/green_200"
-            app:layout_constraintTop_toBottomOf="@id/datePickerButtonEnd" />
+            app:layout_constraintTop_toBottomOf="@id/Button_datePickerEnd" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tdWorkLoad"
+            android:id="@+id/TextInput_workLoad"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="15dp"
-            android:hint="Garga horaria"
-            app:layout_constraintTop_toBottomOf="@+id/view_bar">
+            android:hint="@string/work_load"
+            app:layout_constraintTop_toBottomOf="@+id/View_bar_createRiquirement">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -110,14 +110,14 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tdNameInsti"
+            android:id="@+id/TextInput_nameInstitution"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="15dp"
-            android:hint="Nome da Intituição"
-            app:layout_constraintTop_toBottomOf="@+id/tdWorkLoad">
+            android:hint="@string/name_institution"
+            app:layout_constraintTop_toBottomOf="@+id/TextInput_workLoad">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -127,14 +127,14 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tdObserver"
+            android:id="@+id/TextInput_comments"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="15dp"
-            android:hint="Observações..."
-            app:layout_constraintTop_toBottomOf="@+id/tdNameInsti">
+            android:hint="@string/comments"
+            app:layout_constraintTop_toBottomOf="@+id/TextInput_nameInstitution">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -143,26 +143,25 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/btnAnexo"
+            android:id="@+id/Button_attach"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="32dp"
             android:layout_marginTop="32dp"
             android:drawableStart="@android:drawable/ic_menu_add"
-            android:text="Anexar Arquivo"
-            app:layout_constraintBottom_toTopOf="@+id/btnEnviar"
-            app:layout_constraintTop_toBottomOf="@+id/tdObserver"
+            android:text="@string/attach_file"
+            app:layout_constraintBottom_toTopOf="@+id/Button_send"
+            app:layout_constraintTop_toBottomOf="@+id/TextInput_comments"
             tools:layout_editor_absoluteX="16dp" />
 
         <Button
-            android:id="@+id/btnEnviar"
+            android:id="@+id/Button_send"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Enviar"
+            android:text="@string/send"
             android:textAllCaps="true"
             app:layout_constraintBottom_toBottomOf="parent" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
