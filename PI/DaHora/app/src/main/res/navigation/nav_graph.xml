@@ -3,26 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/homeStudantFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.pi.dahora.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first" >
-
+        android:id="@+id/homeStudantFragment"
+        android:name="com.pi.dahora.studant.HomeStudantFragment"
+        android:label="HomeStudantFragment"
+        tools:layout="@layout/fragment_home_studant">
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_homeStudantFragment_to_requerimentHistoryStudantFragment"
+            app:destination="@id/requerimentHistoryStudantFragment" />
+        <action
+            android:id="@+id/action_homeStudantFragment_to_createRequerimentFragment"
+            app:destination="@id/createRequerimentFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.pi.dahora.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second" >
-
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
-    </fragment>
+        android:id="@+id/requerimentHistoryStudantFragment"
+        android:name="com.pi.dahora.studant.RequerimentHistoryStudantFragment"
+        android:label="fragment_requeriment_history_studant"
+        tools:layout="@layout/fragment_requeriment_history_studant" />
+    <fragment
+        android:id="@+id/createRequerimentFragment"
+        android:name="com.pi.dahora.studant.CreateRequerimentFragment"
+        android:label="CreateRequerimentFragment"
+        tools:layout="@layout/fragment_create_requirement"/>
 </navigation>

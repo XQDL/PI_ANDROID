@@ -11,8 +11,8 @@ data class Course(
     var name : String,
     @SerializedName("additionalHoursTarget")
     var additionalHoursTarget : Double,
-    @SerializedName("coordinator")
-    var coordinator : Cordinator,
+    @SerializedName("coordinatorId")
+    var coordinator : Long,
 
     )
 

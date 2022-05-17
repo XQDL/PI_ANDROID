@@ -9,11 +9,9 @@ import retrofit2.http.POST
 
 data class AuthenticateDTO (
     @SerializedName("email") val email: String,
-    @SerializedName("password") val password: String
+    @SerializedName("password") val password: String,
+    @SerializedName("matricula") val matricula: String?
 )
-
-
-
 
 interface EndpointAuthenticate {
     @Headers("Content-Type: application/json")
