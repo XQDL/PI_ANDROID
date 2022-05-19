@@ -3,6 +3,7 @@ package com.pi.dahora.studant
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,8 +11,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
+import com.google.android.material.snackbar.Snackbar
 import com.pi.dahora.Models.EndpointRequirement
+import com.pi.dahora.Models.Enum.Status
 import com.pi.dahora.Models.Requirement
+import com.pi.dahora.R
 import com.pi.dahora.databinding.FragmentCreateRequirementBinding
 import com.pi.dahora.utils.LoginUser
 import com.pi.dahora.utils.NetworkUtils
@@ -68,6 +73,12 @@ class CreateRequerimentFragment : Fragment() {
 
         var isValid = validate()
 
+        if(!isValid){
+            showError(errorMessage)
+            return
+        }
+        Snackbar.make(binding.root,"Carregando...", Snackbar.LENGTH_INDEFINITE).show()
+
 
         val retrofitClient = NetworkUtils.getRetrofitInstance("https://apidahora.herokuapp.com/api/")
         val endpoint = retrofitClient.create(EndpointRequirement::class.java)
@@ -80,25 +91,37 @@ class CreateRequerimentFragment : Fragment() {
             }
 
             override fun onResponse(call: Call<Requirement>, response: Response<Requirement>) {
-                val erroMensage = when(response.raw().code()){
-                    200 -> ""
+                errorMessage = when(response.raw().code()){
+                    201 -> ""
                     500 -> "Desculpe, ocorreu um erro interno no servidor!"
                     else -> "Ops, ocorreu um erro inesperado!"
                 }
-                showError(erroMensage)
+                showError(errorMessage)
 
 
-
-
-                var x = response.body()
+                if(errorMessage.isNullOrEmpty()){
+                    Snackbar.make(binding.root,"Requerimento criado com sucesso!", Snackbar.LENGTH_LONG).show()
+                    Thread.sleep(1000)
+                    clearFields()
+                }
             }
         })
     }
 
+    //TODO: Tentar voltar para  a HOME_STUDANT_FRAGMENT
+    private fun clearFields(){
+        binding.TextInputComments.editText?.setText("")
+        binding.TextInputWorkLoad.editText?.setText("")
+        binding.EditTextTittleRequirement.editText?.setText("")
+        binding.TextInputNameInstitution.editText?.setText("")
+        binding.ButtonDatePickerStart.setText(getTodaysDate())
+        binding.ButtonDatePickerEnd.setText(getTodaysDate())
+    }
+
     private fun validate(): Boolean {
         var hasError = false
-        hasError = hasError || HasFieldsEmpty()
         hasError = hasError || dateIsInvalid()
+        hasError = hasError || HasFieldsEmpty()
 
 
 
@@ -110,28 +133,23 @@ class CreateRequerimentFragment : Fragment() {
         var startDateString = toDate(binding.ButtonDatePickerStart)
         var endDateString = toDate(binding.ButtonDatePickerEnd)
 
-        var startDate = LocalDate.parse(startDateString, DateTimeFormatter.ofPattern("dd-mm-yyyy"))
-        var endDate = LocalDate.parse(endDateString, DateTimeFormatter.ofPattern("dd-mm-yyyy"))
+        var startDate = LocalDate.parse(startDateString, DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+        var endDate = LocalDate.parse(endDateString, DateTimeFormatter.ofPattern("yyyy-MM-dd"))
 
         val today = Calendar.getInstance().time.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
 
-
-
-        if(today > startDate){
+        if(today < startDate){
             errorMessage = "Data inicial não pode ser maior que a data atual"
             return true
         }
-        if(today > endDate){
-            errorMessage = "Data inicial não pode ser maior que a nota final"
+        if(today < endDate){
+            errorMessage = "Data final não pode ser maior que a data atual"
             return true
         }
-
-
         if(startDate > endDate){
-            errorMessage = "Data inicial não pode ser maior que a nota final"
+            errorMessage = "Data inicial não pode ser maior que a data final"
             return true
         }
-
 
         return false
 
@@ -152,8 +170,10 @@ class CreateRequerimentFragment : Fragment() {
     }
 
     private fun showError(msg: String){
+        binding.TextViewErrorLogin.visibility = View.VISIBLE
         binding.TextViewErrorLogin.setTextColor(Color.RED)
         binding.TextViewErrorLogin.text = msg
+
     }
 
     private fun createRequeriment() : Requirement {
@@ -172,7 +192,7 @@ class CreateRequerimentFragment : Fragment() {
             approvedTime = null,
             reason = null,
             attachment = null,
-            type = null
+            type = Status.APPROVED.printableName
         )
 
         return requeriment
@@ -224,9 +244,4 @@ class CreateRequerimentFragment : Fragment() {
 
         return stringDate
     }
-
-    companion object{
-
-    }
-
 }
