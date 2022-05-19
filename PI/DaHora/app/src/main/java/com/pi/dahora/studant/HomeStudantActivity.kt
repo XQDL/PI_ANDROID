@@ -17,7 +17,6 @@ class HomeStudantActivity : AppCompatActivity() {
         binding = ActivityHomeStudantBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val dado = intent.getSerializableExtra("aluno")
 
         (binding.bottomNavigationStudent).selectedItemId = R.id.homeStudantFragment
 
@@ -25,6 +24,8 @@ class HomeStudantActivity : AppCompatActivity() {
 
         navigationViews()
     }
+
+
 
     private fun navigationViews() {
         binding.bottomNavigationStudent.apply {
@@ -48,7 +49,7 @@ class HomeStudantActivity : AppCompatActivity() {
         fragmentTransaction.commit()
     }
 
-    private fun goHome() {
+    fun goHome() {
         binding.toolbarStudent.title = "DaHora"
 
         val fragment = HomeStudantFragment()
