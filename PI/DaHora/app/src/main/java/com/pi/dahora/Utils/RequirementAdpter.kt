@@ -41,7 +41,7 @@ class RequirementViewHolder(private val view: View) : RecyclerView.ViewHolder(vi
         }
     }
 
-    private fun setImage(staus: String): Int{
+    private fun setImage(staus: String?): Int{
         val drawable = when (staus){
             "created" -> R.drawable.ic_baseline_remove_circle_outline_24
             "approved" -> R.drawable.ic_baseline_check_circle_outline_24
