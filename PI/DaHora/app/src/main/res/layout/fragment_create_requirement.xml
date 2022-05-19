@@ -12,6 +12,18 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/textView_error_Login2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:text="@string/error"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/EditText_password_Login"
+            tools:visibility="visible" />
+
+        <TextView
             android:id="@+id/TextView_tittle_CreatRequirement"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,7 +36,9 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/EditText_tittleRequirement"
+            />
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -37,7 +51,10 @@
             android:hint="@string/tittle_requisition"
             app:boxBackgroundColor="@null"
             app:errorEnabled="true"
-            app:layout_constraintTop_toBottomOf="@id/TextView_tittle_CreatRequirement">
+            app:layout_constraintTop_toBottomOf="@id/TextView_tittle_CreatRequirement"
+            app:layout_constraintBottom_toTopOf="@id/TextView_date_curse"
+
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -56,7 +73,9 @@
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textSize="20sp"
-            app:layout_constraintTop_toBottomOf="@id/EditText_tittleRequirement" />
+            app:layout_constraintTop_toBottomOf="@id/EditText_tittleRequirement"
+            app:layout_constraintBottom_toTopOf="@id/Button_datePickerStart"
+            />
 
         <Button
             android:id="@+id/Button_datePickerStart"
@@ -69,7 +88,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/TextView_date_curse"
             app:layout_constraintEnd_toStartOf="@id/Button_datePickerEnd"
-            app:layout_constraintBottom_toTopOf="@id/View_bar_createRiquirement" />
+            app:layout_constraintBottom_toTopOf="@id/View_bar_createRiquirement"
+            />
 
         <Button
             android:id="@+id/Button_datePickerEnd"
@@ -82,7 +102,11 @@
             app:layout_constraintStart_toEndOf="@id/Button_datePickerStart"
             app:layout_constraintTop_toTopOf="@id/Button_datePickerStart"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/Button_datePickerStart"/>
+            app:layout_constraintBottom_toBottomOf="@id/Button_datePickerStart"
+            app:layout_constraintBottom_toTopOf="@+id/View_bar_createRiquirement"
+
+
+            />
 
         <View
             android:id="@+id/View_bar_createRiquirement"
@@ -90,7 +114,9 @@
             android:layout_height="1dp"
             android:layout_margin="16dp"
             android:background="@color/green_200"
-            app:layout_constraintTop_toBottomOf="@id/Button_datePickerEnd" />
+            app:layout_constraintTop_toBottomOf="@id/Button_datePickerEnd"
+            app:layout_constraintBottom_toTopOf="@+id/TextInput_workLoad"
+        />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/TextInput_workLoad"
@@ -100,7 +126,8 @@
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="15dp"
             android:hint="@string/work_load"
-            app:layout_constraintTop_toBottomOf="@+id/View_bar_createRiquirement">
+            app:layout_constraintTop_toBottomOf="@+id/View_bar_createRiquirement"
+            app:layout_constraintBottom_toTopOf="@+id/TextInput_nameInstitution">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -117,7 +144,11 @@
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="15dp"
             android:hint="@string/name_institution"
-            app:layout_constraintTop_toBottomOf="@+id/TextInput_workLoad">
+            app:layout_constraintTop_toBottomOf="@+id/TextInput_workLoad"
+            app:layout_constraintBottom_toTopOf="@+id/TextInput_comments">
+
+
+        >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -134,7 +165,9 @@
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="15dp"
             android:hint="@string/comments"
-            app:layout_constraintTop_toBottomOf="@+id/TextInput_nameInstitution">
+            app:layout_constraintTop_toBottomOf="@+id/TextInput_nameInstitution"
+            app:layout_constraintBottom_toTopOf="@+id/TextView_error_Login">
+
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -142,17 +175,32 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:id="@+id/Button_attach"
+        <TextView
+            android:id="@+id/TextView_error_Login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:text="@string/error"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/TextInput_comments"
+            app:layout_constraintBottom_toTopOf="@+id/Button_attach"
+
+            tools:visibility="visible" />
+
+        <Button
+            android:id="@+id/Button_attach"
+            android:layout_width="260dp"
+            android:layout_height="48dp"
             android:layout_marginHorizontal="32dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:drawableStart="@android:drawable/ic_menu_add"
             android:text="@string/attach_file"
             app:layout_constraintBottom_toTopOf="@+id/Button_send"
-            app:layout_constraintTop_toBottomOf="@+id/TextInput_comments"
-            tools:layout_editor_absoluteX="16dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TextView_error_Login" />
 
         <Button
             android:id="@+id/Button_send"
@@ -161,6 +209,7 @@
             android:layout_margin="10dp"
             android:text="@string/send"
             android:textAllCaps="true"
+            app:layout_constraintTop_toBottomOf="@+id/Button_attach"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

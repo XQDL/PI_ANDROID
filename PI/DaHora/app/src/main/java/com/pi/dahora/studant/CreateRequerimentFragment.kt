@@ -3,13 +3,15 @@ package com.pi.dahora.studant
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
-import com.pi.dahora.Models.*
+import com.pi.dahora.Models.EndpointRequirement
+import com.pi.dahora.Models.Requirement
 import com.pi.dahora.databinding.FragmentCreateRequirementBinding
 import com.pi.dahora.utils.LoginUser
 import com.pi.dahora.utils.NetworkUtils
@@ -17,6 +19,9 @@ import com.pi.dahora.utils.TimeUtils
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.time.LocalDate
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 class CreateRequerimentFragment : Fragment() {
@@ -26,6 +31,8 @@ class CreateRequerimentFragment : Fragment() {
     private lateinit var binding: FragmentCreateRequirementBinding
 
     private lateinit var button : Button
+
+    private var errorMessage : String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,6 +66,9 @@ class CreateRequerimentFragment : Fragment() {
 
     private fun sendRequeriment(){
 
+        var isValid = validate()
+
+
         val retrofitClient = NetworkUtils.getRetrofitInstance("https://apidahora.herokuapp.com/api/")
         val endpoint = retrofitClient.create(EndpointRequirement::class.java)
         val requirement = createRequeriment()
@@ -66,13 +76,84 @@ class CreateRequerimentFragment : Fragment() {
 
         callback.enqueue(object : Callback<Requirement> {
             override fun onFailure(call: Call<Requirement>, t: Throwable) {
-
+                showError("Desculpe, ocorreu um erro interno no servidor!")
             }
 
             override fun onResponse(call: Call<Requirement>, response: Response<Requirement>) {
+                val erroMensage = when(response.raw().code()){
+                    200 -> ""
+                    500 -> "Desculpe, ocorreu um erro interno no servidor!"
+                    else -> "Ops, ocorreu um erro inesperado!"
+                }
+                showError(erroMensage)
+
+
+
+
                 var x = response.body()
             }
         })
+    }
+
+    private fun validate(): Boolean {
+        var hasError = false
+        hasError = hasError || HasFieldsEmpty()
+        hasError = hasError || dateIsInvalid()
+
+
+
+
+        return !hasError
+    }
+
+    private fun dateIsInvalid(): Boolean {
+        var startDateString = toDate(binding.ButtonDatePickerStart)
+        var endDateString = toDate(binding.ButtonDatePickerEnd)
+
+        var startDate = LocalDate.parse(startDateString, DateTimeFormatter.ofPattern("dd-mm-yyyy"))
+        var endDate = LocalDate.parse(endDateString, DateTimeFormatter.ofPattern("dd-mm-yyyy"))
+
+        val today = Calendar.getInstance().time.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
+
+
+
+        if(today > startDate){
+            errorMessage = "Data inicial não pode ser maior que a data atual"
+            return true
+        }
+        if(today > endDate){
+            errorMessage = "Data inicial não pode ser maior que a nota final"
+            return true
+        }
+
+
+        if(startDate > endDate){
+            errorMessage = "Data inicial não pode ser maior que a nota final"
+            return true
+        }
+
+
+        return false
+
+    }
+
+    private fun HasFieldsEmpty() : Boolean{
+        var isError = false
+
+        isError = isError || binding.EditTextTittleRequirement.editText?.text.toString().isNullOrEmpty()
+        isError = isError || binding.TextInputWorkLoad.editText?.text.toString().isNullOrEmpty()
+        isError = isError || binding.TextInputNameInstitution.editText?.text.toString().isNullOrEmpty()
+
+        if(isError){
+            errorMessage = "Preencha todos os  campos"
+        }
+
+        return isError
+    }
+
+    private fun showError(msg: String){
+        binding.TextViewErrorLogin.setTextColor(Color.RED)
+        binding.TextViewErrorLogin.text = msg
     }
 
     private fun createRequeriment() : Requirement {
