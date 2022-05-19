@@ -35,9 +35,7 @@ data class Requirement(
     @SerializedName("attachment")
     var attachment: ByteArray?,
     @SerializedName("type")
-    var type: String,
-    @SerializedName("status")
-    var status : String?
+    var type: String
 )
 
 

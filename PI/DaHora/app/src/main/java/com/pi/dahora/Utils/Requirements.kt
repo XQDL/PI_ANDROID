@@ -19,7 +19,6 @@ class Requirements {
             1,
             null,
             "approved",
-            null
         ),
         Requirement(
             1,
@@ -36,7 +35,6 @@ class Requirements {
             2,
             null,
             "denied",
-            null
         ),
         Requirement(
             2,
@@ -53,7 +51,6 @@ class Requirements {
             3,
             null,
             "created",
-            null
         ),
         Requirement(
             0,
@@ -70,7 +67,6 @@ class Requirements {
             1,
             null,
             "approved",
-            null
         ),
         Requirement(
             1,
@@ -87,7 +83,6 @@ class Requirements {
             2,
             null,
             "denied",
-            null
         ),
         Requirement(
             2,
@@ -104,7 +99,6 @@ class Requirements {
             3,
             null,
             "created",
-            null
         ),
         Requirement(
             0,
@@ -121,7 +115,6 @@ class Requirements {
             1,
             null,
             "approved",
-            null
         ),
         Requirement(
             1,
@@ -138,7 +131,6 @@ class Requirements {
             2,
             null,
             "denied",
-            null
         ),
         Requirement(
             2,
@@ -155,7 +147,6 @@ class Requirements {
             3,
             null,
             "created",
-            null
         ),
         Requirement(
             0,
@@ -172,7 +163,6 @@ class Requirements {
             1,
             null,
             "approved",
-            null
         ),
         Requirement(
             1,
@@ -189,7 +179,6 @@ class Requirements {
             2,
             null,
             "denied",
-            null
         ),
         Requirement(
             2,
@@ -206,7 +195,6 @@ class Requirements {
             3,
             null,
             "created",
-            null
         ),
         Requirement(
             0,
@@ -223,7 +211,6 @@ class Requirements {
             1,
             null,
             "approved",
-            null
         ),
         Requirement(
             1,
@@ -240,7 +227,6 @@ class Requirements {
             2,
             null,
             "denied",
-            null
         ),
         Requirement(
             2,
@@ -257,9 +243,7 @@ class Requirements {
             3,
             null,
             "created",
-            null
         ),
-
 
     )
 }

@@ -192,7 +192,7 @@ class CreateRequerimentFragment : Fragment() {
             approvedTime = null,
             reason = null,
             attachment = null,
-            type = Status.APPROVED.printableName
+            type = Status.CREATED.printableName
         )
 
         return requeriment
