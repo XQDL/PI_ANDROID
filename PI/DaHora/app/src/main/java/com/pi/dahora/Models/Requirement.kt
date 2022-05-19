@@ -21,7 +21,7 @@ data class Requirement(
     @SerializedName("comments")
     var comments: String?,
     @SerializedName("attachmentAdress")
-    var attachmentAdress: String,
+    var attachmentAdress: String?,
     @SerializedName("institutionName")
     var institutionName: String,
     @SerializedName("createdTime")
@@ -35,7 +35,9 @@ data class Requirement(
     @SerializedName("attachment")
     var attachment: ByteArray?,
     @SerializedName("type")
-    var type: String?,
+    var type: String,
+    @SerializedName("status")
+    var status : String?
 )
 
 

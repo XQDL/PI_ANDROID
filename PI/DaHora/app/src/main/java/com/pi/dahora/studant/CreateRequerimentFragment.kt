@@ -91,7 +91,8 @@ class CreateRequerimentFragment : Fragment() {
             approvedTime = null,
             reason = null,
             attachment = null,
-            type = null
+            type = "created",
+            status = null
         )
 
         return requeriment

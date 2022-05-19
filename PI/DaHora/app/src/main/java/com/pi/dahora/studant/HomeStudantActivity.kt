@@ -21,7 +21,7 @@ class HomeStudantActivity : AppCompatActivity() {
 
         (binding.bottomNavigationStudent).selectedItemId = R.id.homeStudantFragment
 
-        goHistory()
+        goHome()
 
         navigationViews()
     }

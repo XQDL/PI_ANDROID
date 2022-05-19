@@ -1,14 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ViewRequisitionFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/student_name"
+            style="@style/view_requirement"
+            tools:text="Solicitante: Adailson de Almeida dos Santos" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/status_requirement"
+            style="@style/view_requirement"
+            tools:text="Situaçao: Aprovado" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/date_star_requirement"
+            style="@style/view_requirement"
+            tools:text="Data de solicitação : 19/05/2022 10:17" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/date_completion_requirement"
+            style="@style/view_requirement"
+            tools:text="Data de conclusão : 23/05/2022 22:32" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/course_name"
+            style="@style/view_requirement"
+            tools:text="Curso: Análise e Desenvolvimento de Sistemas " />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tittle_requirement"
+            style="@style/view_requirement"
+            tools:text="Título da Atividade: Xqdl" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/workload"
+            style="@style/view_requirement"
+            tools:text="Carga Horária 26 horas: " />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/date_start_activity"
+            style="@style/view_requirement"
+            tools:text="Data de inicio: 17/06/2020" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/date_end_activity"
+            style="@style/view_requirement"
+            tools:text="Data de conclusão: 18/06/2021" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/intitution_name"
+            style="@style/view_requirement"
+            tools:text="Instituição de Origem: xqdl Intituto" />
+
+    </LinearLayout>
+
 
 </FrameLayout>

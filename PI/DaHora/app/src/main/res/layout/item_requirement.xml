@@ -17,26 +17,43 @@
             android:layout_height="50dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            tools:src="@drawable/ic_baseline_check_circle_outline_24" />
+            tools:src="@drawable/ic_baseline_remove_circle_outline_24" />
 
         <TextView
-            android:id="@+id/TextView_studentName"
+            android:id="@+id/TextView_Tittle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@id/ImageView_icon_status"
             android:textColor="@color/black"
             android:textSize="20sp"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:layout_marginEnd="50dp"
             android:textStyle="bold"
-            tools:text="Adailson Almeida" />
+            tools:text="Curso de Ingles avançado para zoologico" />
 
         <TextView
+            android:id="@+id/TextView_extra"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/TextView_studentName"
+            android:layout_below="@id/TextView_Tittle"
             android:layout_marginStart="10dp"
+            android:layout_marginEnd="50dp"
             android:layout_toEndOf="@id/ImageView_icon_status"
-            tools:text="Sem obsiahsajh ahudad adgadj aiuda d" />
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            tools:text="4 horas" />
+
+        <TextView
+            android:id="@+id/TextView_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:ellipsize="marquee"
+            tools:text="17 mai" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
