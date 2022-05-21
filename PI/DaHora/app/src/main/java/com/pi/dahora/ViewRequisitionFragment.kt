@@ -49,12 +49,14 @@ class ViewRequisitionFragment(requirement: Requirement) : Fragment() {
           binding.studentName.text = requirement.toString()
 
 
-        if(LoginUser.isCoordinator){
+        if(LoginUser.isCoordinator && requirement.type == Status.CREATED.printableName){
             binding.aprove.visibility = View.VISIBLE
             binding.reprove.visibility = View.VISIBLE
+            binding.reason.visibility = View.VISIBLE
         } else{
             binding.aprove.visibility = View.INVISIBLE
             binding.reprove.visibility = View.INVISIBLE
+            binding.reason.visibility = View.INVISIBLE
         }
 
         binding.aprove.setOnClickListener { aprove() }

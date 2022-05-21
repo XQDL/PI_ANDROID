@@ -28,7 +28,7 @@ class LoginActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         initView()
-        binding.ButtonLogin.performClick()
+        binding.ButtonLogin//.performClick()
     }
 
     private fun initView(){
@@ -36,9 +36,9 @@ class LoginActivity : AppCompatActivity() {
             val email = binding.EditTextEmailLogin.text.toString()
             val password = binding.EditTextPasswordLogin.text.toString()
             if((email == "") and (password == "")){
-                //getData("321","321")
+                getData("898989","321")
 
-                getData("carlos.gouveia@unifacear.com","12345678")
+                //getData("carlos.gouveia@unifacear.com","12345678")
             }
             else{
                 getData(email, password)
@@ -61,14 +61,17 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
-    private fun getData(email: String, password: String) {
+    private fun getData(login: String, password: String) {
 
         binding.TextViewErrorLogin.visibility = View.VISIBLE
         binding.TextViewErrorLogin.text = "AUTENTICANDO..."
         binding.TextViewErrorLogin.setTextColor(resources.getColor(R.color.green_200))
         binding.ProgressBarLogin.visibility = View.VISIBLE
 
-        val matricula = null
+        var matricula : String = ""
+        var email : String = ""
+
+        if (login.split("@").size > 1) email = login else matricula = login
 
         val retrofitClient = NetworkUtils.getRetrofitInstance("https://apidahora.herokuapp.com/api/")
         val endpoint = retrofitClient.create(EndpointAuthenticate::class.java)

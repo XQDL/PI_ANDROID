@@ -51,7 +51,7 @@ class RequerimentHistoryStudantFragment : Fragment() {
     private fun recycleView(){
         val onClickListener = ItemClickListener{requirement ->
             val fragment = ViewRequisitionFragment(requirement)
-            parentFragmentManager.beginTransaction().replace(R.id.fragmentContainerView_Coordinator, fragment).commit()
+            parentFragmentManager.beginTransaction().replace(R.id.fragmentContainerView_Student, fragment).commit()
         }
 
         val recyclerView = binding.recycleViewS
@@ -77,11 +77,15 @@ class RequerimentHistoryStudantFragment : Fragment() {
                 val requirementsTemp = response.body()
 
                 if (requirementsTemp != null){
-                    requirements = requirementsTemp
+                    requirements = filterRequirements(requirementsTemp)
                     recycleView()
                 }
 
             }
         })
+    }
+
+    private fun filterRequirements(requirementsTemp: List<Requirement>): List<Requirement> {
+        return requirementsTemp.filter { requirement -> requirement.student  == LoginUser.userLogged.id.toLong()}
     }
 }
