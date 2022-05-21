@@ -2,7 +2,10 @@ package com.pi.dahora.Models
 
 import com.google.gson.annotations.SerializedName
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.PUT
+import retrofit2.http.Path
 
 data class Student(
     @SerializedName("id")
@@ -25,4 +28,11 @@ data class Student(
 interface EndpointStudent {
     @GET("student")
     fun getStudents() : Call<List<Student>>
+
+    @GET("student/{id}")
+    fun getStudentById(@Path("id") id : Long) : Call<Student>
+
+    @PUT("student/{id}")
+    fun attStudent(@Body student: Student, @Path("id") id : Long) : Call<Student>
+
 }

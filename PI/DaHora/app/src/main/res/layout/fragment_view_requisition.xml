@@ -6,62 +6,78 @@
     android:layout_height="match_parent"
     tools:context=".ViewRequisitionFragment">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/student_name"
             style="@style/view_requirement"
+            android:layout_height="296dp"
+
+            android:singleLine="false"
+            app:layout_constraintBottom_toTopOf="@id/reprove"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
             tools:text="Solicitante: Adailson de Almeida dos Santos" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/status_requirement"
-            style="@style/view_requirement"
-            tools:text="Situaçao: Aprovado" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/reason"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="15dp"
+            android:hint="Motivo"
+            app:layout_constraintBottom_toTopOf="@+id/aprove"
+            app:layout_constraintTop_toBottomOf="@+id/student_name"
+            tools:layout_editor_absoluteX="10dp">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/date_star_requirement"
-            style="@style/view_requirement"
-            tools:text="Data de solicitação : 19/05/2022 10:17" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/date_completion_requirement"
-            style="@style/view_requirement"
-            tools:text="Data de conclusão : 23/05/2022 22:32" />
+        <TextView
+            android:id="@+id/errorMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/aprove"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/student_name"
+            tools:visibility="invisible" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/course_name"
-            style="@style/view_requirement"
-            tools:text="Curso: Análise e Desenvolvimento de Sistemas " />
+        <Button
+            android:id="@+id/aprove"
+            android:layout_width="162dp"
+            android:layout_height="wrap_content"
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tittle_requirement"
-            style="@style/view_requirement"
-            tools:text="Título da Atividade: Xqdl" />
+            android:text="Aprovar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/reprove"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/student_name"
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/workload"
-            style="@style/view_requirement"
-            tools:text="Carga Horária 26 horas: " />
+            app:layout_constraintVertical_bias="0.835" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/date_start_activity"
-            style="@style/view_requirement"
-            tools:text="Data de inicio: 17/06/2020" />
+        <Button
+            android:id="@+id/reprove"
+            android:layout_width="162dp"
+            android:layout_height="wrap_content"
+            android:text="Reprovar"
+            app:layout_constraintBottom_toBottomOf="@id/aprove"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.404"
+            app:layout_constraintStart_toEndOf="@id/aprove"
+            android:backgroundTint="@color/red_error"
+            app:layout_constraintTop_toTopOf="@+id/aprove"
+            app:layout_constraintVertical_bias="0.0" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/date_end_activity"
-            style="@style/view_requirement"
-            tools:text="Data de conclusão: 18/06/2021" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/intitution_name"
-            style="@style/view_requirement"
-            tools:text="Instituição de Origem: xqdl Intituto" />
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </FrameLayout>
