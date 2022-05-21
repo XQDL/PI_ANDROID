@@ -6,14 +6,125 @@
     android:layout_height="match_parent"
     tools:context=".studant.HomeStudantFragment">
 
+
+    <!--Pie chart to display the data-->
+
+
+    <org.eazegraph.lib.charts.PieChart
+        android:id="@+id/piechart"
+        android:layout_width="wrap_content"
+        android:layout_height="546dp"
+
+        android:layout_weight="1"
+        android:padding="10dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
     <TextView
         android:id="@+id/tv_hours"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="210dp"
+        android:layout_height="55dp"
         android:text="@string/carregando"
+        android:textAlignment="center"
         android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.542"
+        app:layout_constraintStart_toStartOf="@+id/piechart"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.405" />
+
+    <TextView
+        android:id="@+id/tv_performed"
+        android:layout_width="140dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginBottom="2dp"
+        android:text="Realizado: "
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@id/tv_target"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.104"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_performedValue"
+        android:layout_width="140dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginBottom="2dp"
+        android:text=""
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@id/tv_target"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/tv_performed"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.487" />
+
+    <TextView
+        android:id="@+id/tv_target"
+        android:layout_width="140dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:text="Objetivo:"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@id/tv_remain"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.104"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_performed" />
+
+    <TextView
+        android:id="@+id/tv_targetValue"
+        android:layout_width="140dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:text=""
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@id/tv_remain"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/tv_target"
+        app:layout_constraintTop_toBottomOf="@+id/tv_performed"
+        app:layout_constraintVertical_bias="0.488" />
+
+    <TextView
+        android:id="@+id/tv_remain"
+        android:layout_width="140dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="40dp"
+        android:text="Faltam:"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.104"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.938"
+        app:layout_constraintTop_toBottomOf="@id/tv_target"
+        />
+
+    <TextView
+        android:id="@+id/tv_remainValue"
+        android:layout_width="140dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="40dp"
+        android:text=""
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/tv_remain"
+        app:layout_constraintTop_toBottomOf="@id/tv_target"
+        app:layout_constraintVertical_bias="0.536" />
 </androidx.constraintlayout.widget.ConstraintLayout>

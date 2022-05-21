@@ -1,22 +1,29 @@
 package com.pi.dahora.studant
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.pi.dahora.Models.*
+import androidx.fragment.app.Fragment
+import com.pi.dahora.Models.Course
+import com.pi.dahora.Models.EndpointCourse
 import com.pi.dahora.R
 import com.pi.dahora.databinding.FragmentHomeStudantBinding
 import com.pi.dahora.utils.LoginUser
 import com.pi.dahora.utils.NetworkUtils
+import org.eazegraph.lib.models.PieModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.lang.Exception
+
+
 
 class HomeStudantFragment : Fragment() {
+    private lateinit var remain: String
+    private lateinit var target: String
+    private lateinit var performed: String
     private lateinit var binding: FragmentHomeStudantBinding
     private lateinit var course: Course
 
@@ -34,6 +41,7 @@ class HomeStudantFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getData()
+
     }
 
 
@@ -71,6 +79,7 @@ class HomeStudantFragment : Fragment() {
                 try{
                     course = response.body()!!
                     hourRender()
+                    setChartData()
                 } catch(e : Exception){
                     showError("Problema ao encontrar suas horas complementares!!")
                 }
@@ -79,11 +88,18 @@ class HomeStudantFragment : Fragment() {
     }
 
     private fun hourRender() {
-        binding.tvHours.textSize = 38F
-        binding.tvHours.setTextColor(Color.GREEN)
+        binding.tvHours.textSize = 32F
+        binding.tvHours.setTextColor(Color.BLACK)
 
-        var performed = formatHour(LoginUser.userLogged.additionalHoursPerformed.toString())
-        var target = formatHour(course.additionalHoursTarget.toString())
+        performed = formatHour(LoginUser.userLogged.additionalHoursPerformed.toString())
+        target = formatHour(course.additionalHoursTarget.toString())
+        remain = formatHour((target.toFloat() - performed.toFloat()).toString())
+
+
+        binding.tvPerformedValue.text = performed + " Horas"
+        binding.tvTargetValue.text = target + " Horas"
+        binding.tvRemainValue.text = remain + " Horas"
+
 
         binding.tvHours.text =  performed + "/" + target + " Hrs"
     }
@@ -100,6 +116,38 @@ class HomeStudantFragment : Fragment() {
 
         return formattedHour
     }
+
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun setChartData() {
+        // Set the data and color to the pie chart
+        // Set the data and color to the pie chart
+
+        val pieChart = binding.piechart
+        pieChart.addPieSlice(
+            PieModel(
+                "Performed", target.toFloat() - performed.toFloat(),
+                Color.parseColor("#FF0000")
+            )
+        )
+        pieChart.addPieSlice(
+            PieModel(
+                "Target", performed.toFloat(),
+                Color.parseColor("#90EE90")
+            )
+        )
+        // To animate the pie chart
+
+
+
+
+
+
+
+        pieChart.startAnimation()
+    }
+
+
 
 
     private fun showError(msg: String){

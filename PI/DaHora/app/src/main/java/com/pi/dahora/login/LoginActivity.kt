@@ -28,6 +28,7 @@ class LoginActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         initView()
+        binding.ButtonLogin.performClick()
     }
 
     private fun initView(){
@@ -35,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
             val email = binding.EditTextEmailLogin.text.toString()
             val password = binding.EditTextPasswordLogin.text.toString()
             if((email == "") and (password == "")){
-                getData("321","321")
+                getData("123","123")
             }
             else{
                 getData(email, password)
