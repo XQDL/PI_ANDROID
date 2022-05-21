@@ -20,6 +20,8 @@ class HomeCoordinatorActivity : AppCompatActivity() {
         fragmentTransaction.replace(R.id.fragmentContainerView_Coordinator, requerimentHistoryFragment, "")
         fragmentTransaction.commit()
 
+        goHome()
+
         navigationViews()
     }
 
@@ -27,7 +29,7 @@ class HomeCoordinatorActivity : AppCompatActivity() {
         binding.bottomNavigationCoordinator.apply {
             setOnItemSelectedListener { item ->
                 when (item.itemId) {
-                    R.id.requerimentPendingFragment -> goCreate()
+                    R.id.requerimentPendingFragment -> goPending()
                     R.id.studentsListFragment -> goHome()
                     R.id.requerimentHistoryCoordinatorFragment -> goHistory()
                 }
@@ -50,7 +52,7 @@ class HomeCoordinatorActivity : AppCompatActivity() {
         fragmentTransaction.commit()
     }
 
-    private fun goCreate() {
+    private fun goPending() {
         val fragment = RequerimentPendingFragment()
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragmentContainerView_Coordinator, fragment, "")

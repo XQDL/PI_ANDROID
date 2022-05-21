@@ -20,4 +20,7 @@ data class Course(
 interface EndpointCourse {
     @GET("course/{id}")
     fun getCourseById(@Path("id") id : Long) : Call<Course>
+
+    @GET("course")
+    fun getCourses() : Call<List<Course>>
 }

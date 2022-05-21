@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.pi.dahora.Models.Requirement
 import com.pi.dahora.databinding.ItemRequirementBinding
+import com.pi.dahora.utils.TimeUtils
 
 
 class RequirementAdpter(
@@ -36,9 +37,38 @@ class RequirementViewHolder(private val view: View) : RecyclerView.ViewHolder(vi
             setOnClickListener{ onItemClickListener.onClick(requirement)}
             binding.ImageViewIconStatus.setImageResource(setImage(requirement.type))
             binding.TextViewTittle.text = requirement.tittle
-            binding.TextViewExtra.text = requirement.workLoad.toString()
-            binding.TextViewDate.text = requirement.createdTime
+            binding.TextViewExtra.text = formatHour(requirement.workLoad.toString()) + " Horas"
+            binding.TextViewDate.text = dateFormater(requirement.createdTime)
         }
+    }
+
+    private fun dateFormater(date : String): String{
+        var splitedDate = date.split("T")[0].split("-")
+
+        var day = splitedDate[2].toInt()
+        var month = splitedDate[1].toInt()
+        var year = splitedDate[0].toInt()
+
+        return makeDateString(day, month, year)
+    }
+
+    private fun makeDateString(day: Int, month: Int, year: Int): String {
+        return TimeUtils.getMonthString(month) + "/" + day + "/" + year
+    }
+
+
+
+    private fun formatHour(hour: String): String {
+        var splited = hour.split(".")
+        var formattedHour : String
+
+        if(splited[1] == "0"){
+            formattedHour = splited[0]
+        } else{
+            formattedHour = hour
+        }
+
+        return formattedHour
     }
 
     private fun setImage(staus: String?): Int{

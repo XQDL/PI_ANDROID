@@ -23,6 +23,6 @@ data class Student(
     var course : Long,
     )
 interface EndpointStudent {
-    @GET("api/student")
+    @GET("student")
     fun getStudents() : Call<List<Student>>
 }
