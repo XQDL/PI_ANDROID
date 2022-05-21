@@ -15,10 +15,7 @@ class HomeCoordinatorActivity : AppCompatActivity() {
         binding = ActivityHomeCoordinatorBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val requerimentHistoryFragment = RequerimentHistoryCoordinatorFragment()
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainerView_Coordinator, requerimentHistoryFragment, "")
-        fragmentTransaction.commit()
+        (binding.bottomNavigationCoordinator).selectedItemId = R.id.studentsListFragment
 
         goHome()
 

@@ -36,9 +36,9 @@ class LoginActivity : AppCompatActivity() {
             val email = binding.EditTextEmailLogin.text.toString()
             val password = binding.EditTextPasswordLogin.text.toString()
             if((email == "") and (password == "")){
-                getData("321","321")
+                //getData("321","321")
 
-                //getData("carlos.gouveia@unifacear.com","12345678")
+                getData("carlos.gouveia@unifacear.com","12345678")
             }
             else{
                 getData(email, password)

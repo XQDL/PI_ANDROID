@@ -13,6 +13,7 @@ import com.pi.dahora.Models.Enum.Status
 import com.pi.dahora.R
 import com.pi.dahora.RequirementAdpter
 import com.pi.dahora.ViewRequisitionFragment
+import com.pi.dahora.databinding.FragmentPendingRequestsBinding
 import com.pi.dahora.databinding.FragmentRequerimentHistoryStudantBinding
 import com.pi.dahora.utils.LoginUser
 import com.pi.dahora.utils.NetworkUtils
@@ -23,7 +24,7 @@ import retrofit2.Response
 class RequerimentPendingFragment : Fragment() {
     private lateinit var students: List<Student>
     private lateinit var courses: List<Course>
-    private lateinit var binding: FragmentRequerimentHistoryStudantBinding
+    private lateinit var binding: FragmentPendingRequestsBinding
     private lateinit var requirements : List<Requirement>
 
 
@@ -33,7 +34,7 @@ class RequerimentPendingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        binding = FragmentRequerimentHistoryStudantBinding.inflate(inflater)
+        binding = FragmentPendingRequestsBinding.inflate(layoutInflater)
         getDataCourses()
 
         return binding.root
@@ -51,7 +52,7 @@ class RequerimentPendingFragment : Fragment() {
             }
         }
 
-        val recyclerView = binding.recycleViewS
+        val recyclerView = binding.recycleViewC
         val adpter = RequirementAdpter(requirements, onClickListener)
         val layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false )
 

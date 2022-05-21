@@ -10,7 +10,6 @@ import com.pi.dahora.databinding.ActivityHomeStudantBinding
 
 class HomeStudantActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeStudantBinding
-    private lateinit var navigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
