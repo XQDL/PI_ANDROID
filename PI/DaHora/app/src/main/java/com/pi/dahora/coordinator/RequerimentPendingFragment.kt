@@ -17,9 +17,14 @@ import com.pi.dahora.databinding.FragmentPendingRequestsBinding
 import com.pi.dahora.databinding.FragmentRequerimentHistoryStudantBinding
 import com.pi.dahora.utils.LoginUser
 import com.pi.dahora.utils.NetworkUtils
+import com.pi.dahora.utils.Requirements
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+
 
 class RequerimentPendingFragment : Fragment() {
     private lateinit var students: List<Student>
@@ -42,14 +47,15 @@ class RequerimentPendingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        getDataCourses()
 
     }
 
     private fun recycleView(){
-        val onClickListener = ItemClickListener{requirement ->
-            Intent(this.context, ViewRequisitionFragment(requirement)::class.java).apply {
 
-            }
+        val onClickListener = ItemClickListener{req ->
+            val fragment = ViewRequisitionFragment(req)
+            parentFragmentManager.beginTransaction().addToBackStack("requerimentPending").replace(R.id.fragmentContainerView_Coordinator, fragment).commit()
         }
 
         val recyclerView = binding.recycleViewC

@@ -50,9 +50,8 @@ class RequerimentHistoryStudantFragment : Fragment() {
 
     private fun recycleView(){
         val onClickListener = ItemClickListener{requirement ->
-            Intent(this.context, ViewRequisitionFragment(requirement)::class.java).apply {
-
-            }
+            val fragment = ViewRequisitionFragment(requirement)
+            parentFragmentManager.beginTransaction().replace(R.id.fragmentContainerView_Coordinator, fragment).commit()
         }
 
         val recyclerView = binding.recycleViewS

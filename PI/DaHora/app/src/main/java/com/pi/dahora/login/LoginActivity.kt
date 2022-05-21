@@ -109,9 +109,11 @@ class LoginActivity : AppCompatActivity() {
 
         if (user.phoneNumber != null){
             callHomeCoordinator()
+            LoginUser.isCoordinator = true
         }
         else {
             callHomeStudent()
+            LoginUser.isCoordinator = false
         }
     }
 
