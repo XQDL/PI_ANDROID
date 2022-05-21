@@ -3,6 +3,7 @@ package com.pi.dahora.Models
 import com.google.gson.annotations.SerializedName
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 data class Course(
     @SerializedName("id")
@@ -17,6 +18,6 @@ data class Course(
     )
 
 interface EndpointCourse {
-    @GET("api/course")
-    fun getCourses() : Call<List<Course>>
+    @GET("course/{id}")
+    fun getCourseById(@Path("id") id : Long) : Call<Course>
 }

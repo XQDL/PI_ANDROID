@@ -18,12 +18,12 @@ data class User(
     var additionalHoursPerformed : Double?,
     @SerializedName("hasCompletedHoursster")
     var hasCompletedHours : Boolean?,
-    @SerializedName("Course")
-    var course : Course?,
+    @SerializedName("courseId")
+    var courseId : Long?,
     @SerializedName("phoneNumber")
     var phoneNumber : String?
 ) {
     override fun toString(): String {
-        return "User(id=$id, name=$name, email=$email, password=$password, register=$register, additionalHoursPerformed=$additionalHoursPerformed, hasCompletedHours=$hasCompletedHours, course=$course, phoneNumber=$phoneNumber)"
+        return "User(id=$id, name=$name, email=$email, password=$password, register=$register, additionalHoursPerformed=$additionalHoursPerformed, hasCompletedHours=$hasCompletedHours, courseId=$courseId, phoneNumber=$phoneNumber)"
     }
 }

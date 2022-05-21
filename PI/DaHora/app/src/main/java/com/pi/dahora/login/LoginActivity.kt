@@ -74,9 +74,7 @@ class LoginActivity : AppCompatActivity() {
 
         callback.enqueue(object : Callback<User> {
             override fun onFailure(call: Call<User>, t: Throwable) {
-                binding.TextViewErrorLogin.setTextColor(Color.RED)
-                binding.ProgressBarLogin.visibility = View.GONE
-                binding.TextViewErrorLogin.text = "Desculpe, ocorreu um erro interno no servidor!"
+               showError("Desculpe, ocorreu um erro interno no servidor!")
             }
 
             override fun onResponse(call: Call<User>, response: Response<User>) {
