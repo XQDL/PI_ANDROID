@@ -48,14 +48,14 @@ class RequerimentHistoryCoordinatorFragment : Fragment() {
     ): View {
 
         binding = FragmentRequerimentHistoryCoordinatorBinding.inflate(layoutInflater)
-        getDataCourses()
+        getData()
 
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getDataCourses()
+        getData()
 
     }
 
@@ -75,103 +75,138 @@ class RequerimentHistoryCoordinatorFragment : Fragment() {
         recyclerView.adapter = adpter
     }
 
-    private fun getDataCourses() {
-        val retrofitClient =
-            NetworkUtils.getRetrofitInstance("https://apidahora.herokuapp.com/api/")
-        val endpoint = retrofitClient.create(EndpointCourse::class.java)
-        val callback = endpoint.getCourses()
-
-        callback.enqueue(object : Callback<List<Course>> {
-            override fun onFailure(call: Call<List<Course>>, t: Throwable) {
-            }
-
-            override fun onResponse(call: Call<List<Course>>, response: Response<List<Course>>) {
-                val coursesTemp = response.body()
-
-                if (coursesTemp != null) {
-                    courses = filterCourses(coursesTemp)
-                    getDataStudents()
-
-                }
-            }
-        })
-    }
 
 
-    private fun getDataStudents() {
-        val retrofitClient =
-            NetworkUtils.getRetrofitInstance("https://apidahora.herokuapp.com/api/")
-        val endpoint = retrofitClient.create(EndpointStudent::class.java)
-        val callback = endpoint.getStudents()
-
-        callback.enqueue(object : Callback<List<Student>> {
-            override fun onFailure(call: Call<List<Student>>, t: Throwable) {
-            }
-
-            override fun onResponse(call: Call<List<Student>>, response: Response<List<Student>>) {
-                val studentsTemp = response.body()
-
-                if (studentsTemp != null) {
-                    students = filterStudents(studentsTemp)
-                    getDataRequeriments()
-
-                }
-            }
-        })
-    }
-
-    private fun getDataRequeriments() {
-
+    private fun getData() {
         val retrofitClient =
             NetworkUtils.getRetrofitInstance("https://apidahora.herokuapp.com/api/")
         val endpoint = retrofitClient.create(EndpointRequirement::class.java)
-        val callback = endpoint.getRequirements()
+        var id = LoginUser.userLogged.id.toLong()
+
+        val callback = endpoint.getRequirementsByCoordinator(id)
 
         callback.enqueue(object : Callback<List<Requirement>> {
             override fun onFailure(call: Call<List<Requirement>>, t: Throwable) {
             }
 
-            override fun onResponse(
-                call: Call<List<Requirement>>,
-                response: Response<List<Requirement>>
-            ) {
+            override fun onResponse(call: Call<List<Requirement>>, response: Response<List<Requirement>>) {
                 val requirementsTemp = response.body()
 
                 if (requirementsTemp != null) {
-                    requirements = filterRequirements(requirementsTemp)
+                    requirements = requirementsTemp
                     recycleView()
                 }
             }
         })
     }
 
-    private fun filterCourses(courses: List<Course>): List<Course> {
-        return courses.filter { x -> x.coordinator == LoginUser.userLogged.id.toLong() }
-    }
-
-    private fun filterStudents(students: List<Student>): List<Student> {
-        var studentsFiltered: MutableList<Student> = arrayListOf()
-        courses.forEach { course ->
-            studentsFiltered.addAll(students.filter { student ->
-                student.course == course.id.toLong()
-            })
-        }
-        return studentsFiltered
-    }
 
 
-    private fun filterRequirements(requirements: List<Requirement>): List<Requirement> {
-
-        var requirementsFiltered: MutableList<Requirement> = arrayListOf()
 
 
-        students.forEach { student ->
-            requirementsFiltered.addAll(requirements.filter { requirement ->
-                requirement.student == student.id.toLong() && requirement.type != Status.CREATED.printableName
-            })
-        }
-        return requirementsFiltered
 
 
-    }
+
+
+
+
+
+
+//    private fun getDataCourses() {
+//        val retrofitClient =
+//            NetworkUtils.getRetrofitInstance("https://apidahora.herokuapp.com/api/")
+//        val endpoint = retrofitClient.create(EndpointCourse::class.java)
+//        val callback = endpoint.getCourses()
+//
+//        callback.enqueue(object : Callback<List<Course>> {
+//            override fun onFailure(call: Call<List<Course>>, t: Throwable) {
+//            }
+//
+//            override fun onResponse(call: Call<List<Course>>, response: Response<List<Course>>) {
+//                val coursesTemp = response.body()
+//
+//                if (coursesTemp != null) {
+//                    courses = filterCourses(coursesTemp)
+//                    getDataStudents()
+//
+//                }
+//            }
+//        })
+//    }
+//
+//
+//    private fun getDataStudents() {
+//        val retrofitClient =
+//            NetworkUtils.getRetrofitInstance("https://apidahora.herokuapp.com/api/")
+//        val endpoint = retrofitClient.create(EndpointStudent::class.java)
+//        val callback = endpoint.getStudents()
+//
+//        callback.enqueue(object : Callback<List<Student>> {
+//            override fun onFailure(call: Call<List<Student>>, t: Throwable) {
+//            }
+//
+//            override fun onResponse(call: Call<List<Student>>, response: Response<List<Student>>) {
+//                val studentsTemp = response.body()
+//
+//                if (studentsTemp != null) {
+//                    students = filterStudents(studentsTemp)
+//                    getDataRequeriments()
+//
+//                }
+//            }
+//        })
+//    }
+//
+//    private fun getDataRequeriments() {
+//
+//        val retrofitClient =
+//            NetworkUtils.getRetrofitInstance("https://apidahora.herokuapp.com/api/")
+//        val endpoint = retrofitClient.create(EndpointRequirement::class.java)
+//        val callback = endpoint.getRequirements()
+//
+//        callback.enqueue(object : Callback<List<Requirement>> {
+//            override fun onFailure(call: Call<List<Requirement>>, t: Throwable) {
+//            }
+//
+//            override fun onResponse(
+//                call: Call<List<Requirement>>,
+//                response: Response<List<Requirement>>
+//            ) {
+//                val requirementsTemp = response.body()
+//
+//                if (requirementsTemp != null) {
+//                    requirements = filterRequirements(requirementsTemp)
+//                    recycleView()
+//                }
+//            }
+//        })
+//    }
+//
+//    private fun filterCourses(courses: List<Course>): List<Course> {
+//        return courses.filter { x -> x.coordinator == LoginUser.userLogged.id.toLong() }
+//    }
+//
+//    private fun filterStudents(students: List<Student>): List<Student> {
+//        var studentsFiltered: MutableList<Student> = arrayListOf()
+//        courses.forEach { course ->
+//            studentsFiltered.addAll(students.filter { student ->
+//                student.course == course.id.toLong()
+//            })
+//        }
+//        return studentsFiltered
+//    }
+//
+//
+//    private fun filterRequirements(requirements: List<Requirement>): List<Requirement> {
+//
+//        var requirementsFiltered: MutableList<Requirement> = arrayListOf()
+//
+//
+//        students.forEach { student ->
+//            requirementsFiltered.addAll(requirements.filter { requirement ->
+//                requirement.student == student.id.toLong() && requirement.type != Status.CREATED.printableName
+//            })
+//        }
+//        return requirementsFiltered
+//    }
 }

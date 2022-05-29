@@ -45,6 +45,17 @@ interface EndpointRequirement {
     @GET("requirement")
     fun getRequirements() : Call<List<Requirement>>
 
+
+
+    @GET("Query/get_requirements_by_student/{id}")
+    fun getRequirementsByStudent(@Path("id") id: Long) : Call<List<Requirement>>
+
+    @GET("Query/get_requirements_by_coordinator/{id}")
+    fun getRequirementsByCoordinator(@Path("id") id: Long) : Call<List<Requirement>>
+
+    @GET("Query/get_requirements_by_coordinator_to_approve/{id}")
+    fun getRequirementsByCoordinatorToApprove(@Path("id") id: Long) : Call<List<Requirement>>
+
     @POST("requirement")
     fun createRequirement(@Body requeriment: Requirement) : Call<Requirement>
 

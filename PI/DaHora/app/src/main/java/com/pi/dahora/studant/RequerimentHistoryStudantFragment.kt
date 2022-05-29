@@ -63,29 +63,26 @@ class RequerimentHistoryStudantFragment : Fragment() {
     }
 
     private fun getData() {
-
-        val retrofitClient = NetworkUtils.getRetrofitInstance("https://apidahora.herokuapp.com/api/")
+        val retrofitClient =
+            NetworkUtils.getRetrofitInstance("https://apidahora.herokuapp.com/api/")
         val endpoint = retrofitClient.create(EndpointRequirement::class.java)
-        val callback = endpoint.getRequirements()
+        var id = LoginUser.userLogged.id.toLong()
+
+        val callback = endpoint.getRequirementsByStudent(id)
 
         callback.enqueue(object : Callback<List<Requirement>> {
             override fun onFailure(call: Call<List<Requirement>>, t: Throwable) {
             }
 
             override fun onResponse(call: Call<List<Requirement>>, response: Response<List<Requirement>>) {
-
                 val requirementsTemp = response.body()
 
-                if (requirementsTemp != null){
-                    requirements = filterRequirements(requirementsTemp)
+                if (requirementsTemp != null) {
+                    requirements = requirementsTemp
                     recycleView()
                 }
-
             }
         })
     }
 
-    private fun filterRequirements(requirementsTemp: List<Requirement>): List<Requirement> {
-        return requirementsTemp.filter { requirement -> requirement.student  == LoginUser.userLogged.id.toLong()}
-    }
 }
