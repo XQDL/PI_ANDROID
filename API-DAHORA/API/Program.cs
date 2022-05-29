@@ -21,6 +21,7 @@ builder.Services.AddDbContext<CourseContext>(options => options.UseMySql(connect
 builder.Services.AddDbContext<RequirementContext>(options => options.UseMySql(connection, Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.25-mysql")));
 
 builder.Services.AddScoped<AuthenticatorService>();
+builder.Services.AddScoped<QueryService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

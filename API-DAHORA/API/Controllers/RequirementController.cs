@@ -14,25 +14,32 @@ namespace API_DaHora.Controllers
     [ApiController]
     public class RequirementController : ControllerBase
     {
-        private readonly RequirementContext _context;
+        private readonly RequirementContext _contextRequeriments;
+        private readonly CoordinatorContext _contextCoordinator;
+        private readonly CourseContext _contextCourse;
+        private readonly StudentContext _contextStudents;
 
-        public RequirementController(RequirementContext context)
+        public RequirementController(RequirementContext contextRequeriments, CoordinatorContext coordinatorContext, CourseContext courseContext, StudentContext studentContext)
         {
-            _context = context;
+            _contextRequeriments = contextRequeriments;
+            _contextCoordinator = coordinatorContext;
+            _contextCourse = courseContext;
+            _contextStudents = studentContext;
         }
+
 
         // GET: api/Requirement
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Requirement>>> GetRequirement()
         {
-            return await _context.Requirement.ToListAsync();
+            return await _contextRequeriments.Requirement.ToListAsync();
         }
 
         // GET: api/Requirement/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Requirement>> GetRequirement(long id)
         {
-            var requirement = await _context.Requirement.FindAsync(id);
+            var requirement = await _contextRequeriments.Requirement.FindAsync(id);
 
             if (requirement == null)
             {
@@ -52,11 +59,11 @@ namespace API_DaHora.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(requirement).State = EntityState.Modified;
+            _contextRequeriments.Entry(requirement).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _contextRequeriments.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -78,8 +85,8 @@ namespace API_DaHora.Controllers
         [HttpPost]
         public async Task<ActionResult<Requirement>> PostRequirement(Requirement requirement)
         {
-            _context.Requirement.Add(requirement);
-            await _context.SaveChangesAsync();
+            _contextRequeriments.Requirement.Add(requirement);
+            await _contextRequeriments.SaveChangesAsync();
 
             return CreatedAtAction("GetRequirement", new { id = requirement.Id }, requirement);
         }
@@ -88,21 +95,24 @@ namespace API_DaHora.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRequirement(long id)
         {
-            var requirement = await _context.Requirement.FindAsync(id);
+            var requirement = await _contextRequeriments.Requirement.FindAsync(id);
             if (requirement == null)
             {
                 return NotFound();
             }
 
-            _context.Requirement.Remove(requirement);
-            await _context.SaveChangesAsync();
+            _contextRequeriments.Requirement.Remove(requirement);
+            await _contextRequeriments.SaveChangesAsync();
 
             return NoContent();
         }
 
+
+
+
         private bool RequirementExists(long id)
         {
-            return _context.Requirement.Any(e => e.Id == id);
+            return _contextRequeriments.Requirement.Any(e => e.Id == id);
         }
     }
 }
