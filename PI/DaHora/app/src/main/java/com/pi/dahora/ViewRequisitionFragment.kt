@@ -19,6 +19,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class ViewRequisitionFragment(requirement: Requirement) : Fragment() {
+    private lateinit var course: Course
     private lateinit var student: Student
     private lateinit var binding: FragmentViewRequisitionBinding
     private val requirement = requirement
@@ -64,6 +65,7 @@ class ViewRequisitionFragment(requirement: Requirement) : Fragment() {
     }
 
     private fun reprove() {
+        Snackbar.make(binding.root,"Carregando...", Snackbar.LENGTH_LONG).show()
         var reason = binding.reason.editText?.text.toString()
 
         if(reason.isNullOrEmpty()){
@@ -82,6 +84,9 @@ class ViewRequisitionFragment(requirement: Requirement) : Fragment() {
 
 
     private fun aprove() {
+        Snackbar.make(binding.root,"Carregando...", Snackbar.LENGTH_LONG).show()
+
+
         requirement.approvedTime = TimeUtils.getAtualHour()
         requirement.type = Status.APPROVED.printableName
         requirement.reason = binding.reason.editText?.text.toString()
@@ -110,21 +115,18 @@ class ViewRequisitionFragment(requirement: Requirement) : Fragment() {
                 }
                 val msg = if (requirement.type == Status.APPROVED.printableName) "aprovado" else "reprovado"
 
-
-                showError(errorMensage)
+                if(!errorMensage.isNullOrEmpty()){
+                    showError(errorMensage)
+                }
                 if(response.raw().code() == 204){
                     Snackbar.make(binding.root,"Requerimento "+ msg +" com sucesso!", Snackbar.LENGTH_LONG).show()
                     Thread.sleep(1000)
-
-
 
                     parentFragmentManager
                         .beginTransaction()
                         .replace(R.id.fragmentContainerView_Coordinator, RequerimentPendingFragment())
                         .commit()
                 }
-
-
             }
         })
     }
@@ -149,7 +151,9 @@ class ViewRequisitionFragment(requirement: Requirement) : Fragment() {
                     else -> "Ops, ocorreu um erro inesperado!"
                 }
 
-                showError(errorMensage)
+                if(!errorMensage.isNullOrEmpty()){
+                    showError(errorMensage)
+                }
 
             }
         })
@@ -175,27 +179,63 @@ class ViewRequisitionFragment(requirement: Requirement) : Fragment() {
                     else -> "Ops, ocorreu um erro inesperado!"
                 }
 
-                showError(errorMensage)
+                if(!errorMensage.isNullOrEmpty()){
+                    showError(errorMensage)
+                }
 
                 val studentTemp = response.body()
 
                 if (studentTemp != null){
                     student = studentTemp
                     student.additionalHoursPerformed += requirement.workLoad
-                    attStudent()
-
-
-
+                    getCourseById(student.course)
                 }
             }
         })
     }
 
 
+    private fun getCourseById(courseId: Long) {
+        val retrofitClient = NetworkUtils.getRetrofitInstance("https://apidahora.herokuapp.com/api/")
+        val endpoint = retrofitClient.create(EndpointCourse::class.java)
+
+
+
+        val callback = endpoint.getCourseById(courseId)
+
+        callback.enqueue(object : Callback<Course> {
+            override fun onFailure(call: Call<Course>, t: Throwable) {
+            }
+
+            override fun onResponse(call: Call<Course>, response: Response<Course>) {
+                val erroMensage = when(response.raw().code()){
+                    404 -> "E-mail ou senha inválidos"
+                    500 -> "Desculpe, ocorreu um erro interno no servidor!"
+                    else -> "Ops, ocorreu um erro inesperado!"
+                }
+                if(!erroMensage.isNullOrEmpty()){
+                    showError(erroMensage)
+                }
+
+
+                try{
+                    course = response.body()!!
+                    if(student.additionalHoursPerformed >= course.additionalHoursTarget){
+                        student.hasCompletedHours = true
+                    }
+
+                    attStudent()
+                } catch(e : Exception){
+                    showError("Erro interno!")
+                }
+            }
+        })
+    }
+
+
+
     private fun showError(msg: String){
-        binding.errorMessage.setTextColor(Color.RED)
-        binding.errorMessage.visibility = View.GONE
-        binding.errorMessage.text = msg
+        Snackbar.make(binding.root,msg, Snackbar.LENGTH_LONG).show()
     }
 
 }

@@ -24,6 +24,7 @@ import retrofit2.Response
 
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.google.android.material.snackbar.Snackbar
 
 
 class RequerimentPendingFragment : Fragment() {
@@ -65,6 +66,8 @@ class RequerimentPendingFragment : Fragment() {
     }
 
     private fun getData() {
+        Snackbar.make(binding.root,"Carregando...", Snackbar.LENGTH_INDEFINITE).show()
+
         val retrofitClient =
             NetworkUtils.getRetrofitInstance("https://apidahora.herokuapp.com/api/")
         val endpoint = retrofitClient.create(EndpointRequirement::class.java)
@@ -82,6 +85,8 @@ class RequerimentPendingFragment : Fragment() {
                 if (requirementsTemp != null) {
                     requirements = requirementsTemp
                     recycleView()
+                    Snackbar.make(binding.root,"", 1).show()
+
                 }
             }
         })

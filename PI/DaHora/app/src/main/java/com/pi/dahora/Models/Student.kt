@@ -20,7 +20,7 @@ data class Student(
     var register : String,
     @SerializedName("additionalHoursPerformed")
     var additionalHoursPerformed : Double,
-    @SerializedName("hasCompletedHoursster")
+    @SerializedName("hasCompletedHours")
     var hasCompletedHours : Boolean,
     @SerializedName("courseId")
     var course : Long,

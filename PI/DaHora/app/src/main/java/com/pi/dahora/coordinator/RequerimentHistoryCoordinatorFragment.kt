@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.pi.dahora.ItemClickListener
 import com.pi.dahora.Models.*
 import com.pi.dahora.Models.Enum.Status
@@ -78,6 +79,8 @@ class RequerimentHistoryCoordinatorFragment : Fragment() {
 
 
     private fun getData() {
+        Snackbar.make(binding.root,"Carregando...", Snackbar.LENGTH_INDEFINITE).show()
+
         val retrofitClient =
             NetworkUtils.getRetrofitInstance("https://apidahora.herokuapp.com/api/")
         val endpoint = retrofitClient.create(EndpointRequirement::class.java)
@@ -95,6 +98,8 @@ class RequerimentHistoryCoordinatorFragment : Fragment() {
                 if (requirementsTemp != null) {
                     requirements = requirementsTemp
                     recycleView()
+                    Snackbar.make(binding.root,"", 1).show()
+
                 }
             }
         })

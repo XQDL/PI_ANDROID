@@ -67,6 +67,11 @@ class CreateRequerimentFragment : Fragment() {
 
         //TODO: Funcionalidades aqui!
 
+        if(HasCompletedHours()){
+            showError(errorMessage)
+            binding.ButtonSend.isEnabled = false
+        }
+
     }
 
     private fun sendRequeriment(){
@@ -120,13 +125,21 @@ class CreateRequerimentFragment : Fragment() {
 
     private fun validate(): Boolean {
         var hasError = false
+
         hasError = hasError || dateIsInvalid()
         hasError = hasError || HasFieldsEmpty()
 
-
-
-
         return !hasError
+    }
+
+    private fun HasCompletedHours(): Boolean {
+
+
+        if (LoginUser.userLogged.hasCompletedHours == true){
+            errorMessage = "Você já concluiu sua meta de horas complementares! Não é mais necessário abrir requerimentos!"
+            return true
+        }
+        return false
     }
 
     private fun dateIsInvalid(): Boolean {
