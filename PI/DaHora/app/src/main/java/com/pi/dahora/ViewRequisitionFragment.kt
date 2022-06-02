@@ -84,7 +84,7 @@ class ViewRequisitionFragment(requirement: Requirement) : Fragment() {
 
 
     private fun aprove() {
-        Snackbar.make(binding.root,"Carregando...", Snackbar.LENGTH_LONG).show()
+        Snackbar.make(binding.root,"Carregando...", Snackbar.LENGTH_INDEFINITE).show()
 
 
         requirement.approvedTime = TimeUtils.getAtualHour()
@@ -209,11 +209,11 @@ class ViewRequisitionFragment(requirement: Requirement) : Fragment() {
 
             override fun onResponse(call: Call<Course>, response: Response<Course>) {
                 val erroMensage = when(response.raw().code()){
-                    404 -> "E-mail ou senha inválidos"
+                    200 -> ""
                     500 -> "Desculpe, ocorreu um erro interno no servidor!"
                     else -> "Ops, ocorreu um erro inesperado!"
                 }
-                if(!erroMensage.isNullOrEmpty()){
+                if(!erroMensage.isNullOrEmpty()) {
                     showError(erroMensage)
                 }
 
