@@ -63,7 +63,7 @@ class ViewRequisitionFragment(requirement: Requirement) : Fragment() {
     }
 
     private fun reprove() {
-        Snackbar.make(binding.root,"Carregando...", Snackbar.LENGTH_LONG).show()
+        Snackbar.make(binding.root,"Carregando...", Snackbar.LENGTH_INDEFINITE).show()
         var reason = binding.reasonLayout.editText?.text.toString()
 
         if(reason.isNullOrEmpty()){
@@ -75,7 +75,7 @@ class ViewRequisitionFragment(requirement: Requirement) : Fragment() {
         requirement.type = Status.DENIED.printableName
         requirement.reason = binding.reasonLayout.editText?.text.toString()
 
-        attRequirement()
+        attRequirement(true)
     }
 
 
@@ -131,7 +131,7 @@ class ViewRequisitionFragment(requirement: Requirement) : Fragment() {
     }
 
 
-    private fun attRequirement() {
+    private fun attRequirement(isReprove: Boolean = false) {
         val retrofitClient = NetworkUtils.getRetrofitInstance("https://apidahora.herokuapp.com/api/")
         val endpoint = retrofitClient.create(EndpointRequirement::class.java)
 
@@ -152,6 +152,16 @@ class ViewRequisitionFragment(requirement: Requirement) : Fragment() {
 
                 if(!errorMensage.isNullOrEmpty()){
                     showError(errorMensage)
+                }
+
+                if(response.raw().code() == 204 && isReprove){
+                    Snackbar.make(binding.root,"Requerimento "+ "reprovado" +" com sucesso!", Snackbar.LENGTH_LONG).show()
+                    Thread.sleep(1000)
+
+                    parentFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.fragmentContainerView_Coordinator, RequerimentPendingFragment())
+                        .commit()
                 }
 
             }
