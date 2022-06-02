@@ -1,6 +1,5 @@
 package com.pi.dahora
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -31,33 +30,32 @@ class ViewRequisitionFragment(requirement: Requirement) : Fragment() {
 
         binding = FragmentViewRequisitionBinding.inflate(layoutInflater)
 
-        incrementView(requirement)
+        getStudentById(requirement.student)
 
         return binding.root
     }
 
     private fun incrementView(requirement : Requirement){
-//        binding.studentName.text =  requirement.student.toString()
-//        binding.statusRequirement.text = requirement.type
-//        binding.dateStarRequirement.text = requirement.createdTime
-//        binding.dateCompletionRequirement.text = requirement.approvedTime
-//        binding.courseName.text = "Anasi"
-//        binding.tittleRequirement.text = requirement.tittle
-//        binding.workload.text = requirement.workLoad.toString()
-//        binding.dateStartActivity.text = requirement.startDate
-//        binding.dateEndActivity.text = requirement.endDate
-//        binding.intitutionName.text = requirement.institutionName
-          binding.studentName.text = requirement.toString()
+        binding.apply {
+            textName.text = student.name
+            textDateInitial.text = dateFormater(requirement.createdTime)
+            textDateFinal.text = if (requirement.approvedTime != null)  dateFormater(requirement.approvedTime!!) else "PENDENTE"
+            textTittle.text = requirement.tittle
+            textHours.text = formatHour(requirement.workLoad.toString())
+            textDateRealization.text = "${dateFormater(requirement.startDate)} - ${dateFormater(requirement.endDate)}"
+            textInstitution.text = requirement.institutionName
+            textStatus.text = requirement.type
+        }
 
 
         if(LoginUser.isCoordinator && requirement.type == Status.CREATED.printableName){
             binding.aprove.visibility = View.VISIBLE
+            binding.reasonLayout.visibility = View.VISIBLE
             binding.reprove.visibility = View.VISIBLE
-            binding.reason.visibility = View.VISIBLE
         } else{
-            binding.aprove.visibility = View.INVISIBLE
-            binding.reprove.visibility = View.INVISIBLE
-            binding.reason.visibility = View.INVISIBLE
+            binding.aprove.visibility = View.GONE
+            binding.reasonLayout.visibility = View.GONE
+            binding.reprove.visibility = View.GONE
         }
 
         binding.aprove.setOnClickListener { aprove() }
@@ -66,7 +64,7 @@ class ViewRequisitionFragment(requirement: Requirement) : Fragment() {
 
     private fun reprove() {
         Snackbar.make(binding.root,"Carregando...", Snackbar.LENGTH_LONG).show()
-        var reason = binding.reason.editText?.text.toString()
+        var reason = binding.reasonLayout.editText?.text.toString()
 
         if(reason.isNullOrEmpty()){
             Snackbar.make(binding.root,"O motivo é obrigatório para excluir um requerimento!", Snackbar.LENGTH_LONG).show()
@@ -75,7 +73,7 @@ class ViewRequisitionFragment(requirement: Requirement) : Fragment() {
 
         requirement.approvedTime = TimeUtils.getAtualHour()
         requirement.type = Status.DENIED.printableName
-        requirement.reason = binding.reason.editText?.text.toString()
+        requirement.reason = binding.reasonLayout.editText?.text.toString()
 
         attRequirement()
     }
@@ -89,11 +87,12 @@ class ViewRequisitionFragment(requirement: Requirement) : Fragment() {
 
         requirement.approvedTime = TimeUtils.getAtualHour()
         requirement.type = Status.APPROVED.printableName
-        requirement.reason = binding.reason.editText?.text.toString()
+        requirement.reason = binding.reasonLayout.editText?.text.toString()
 
         attRequirement()
 
-        getStudentById(requirement.student)
+        student.additionalHoursPerformed += requirement.workLoad
+        getCourseById(student.course)
     }
 
     private fun attStudent() {
@@ -187,8 +186,7 @@ class ViewRequisitionFragment(requirement: Requirement) : Fragment() {
 
                 if (studentTemp != null){
                     student = studentTemp
-                    student.additionalHoursPerformed += requirement.workLoad
-                    getCourseById(student.course)
+                    incrementView(requirement)
                 }
             }
         })
@@ -236,6 +234,42 @@ class ViewRequisitionFragment(requirement: Requirement) : Fragment() {
 
     private fun showError(msg: String){
         Snackbar.make(binding.root,msg, Snackbar.LENGTH_LONG).show()
+    }
+
+    private fun dateFormater(date : String): String{
+        var splitedDate = date.split("T")[0].split("-")
+
+        var day = splitedDate[2].toInt()
+        var month = splitedDate[1].toInt()
+        var year = splitedDate[0].toInt()
+
+        return makeDateString(day, month, year)
+    }
+
+    private fun makeDateString(day: Int, month: Int, year: Int): String {
+        return  formatDay(day) + "/" + TimeUtils.getMonthString(month) + "/" + year
+    }
+
+    private fun formatDay(day: Int) : String{
+        if (day < 10){
+            return "0$day"
+        }
+        return day.toString()
+    }
+
+
+
+    private fun formatHour(hour: String): String {
+        var splited = hour.split(".")
+        var formattedHour : String
+
+        if(splited[1] == "0"){
+            formattedHour = splited[0]
+        } else{
+            formattedHour = hour
+        }
+
+        return formattedHour+" Horas"
     }
 
 }

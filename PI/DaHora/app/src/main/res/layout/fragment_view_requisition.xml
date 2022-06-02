@@ -1,83 +1,268 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ViewRequisitionFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <TextView
+        android:id="@+id/fixedTextRequirement"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="15dp"
+        android:text="Requerimento"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/textName"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/student_name"
-            style="@style/view_requirement"
-            android:layout_height="296dp"
+    <TextView
+        android:id="@+id/fixedTextName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:text="Nome:"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/textName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/textName" />
 
-            android:singleLine="false"
-            app:layout_constraintBottom_toTopOf="@id/reprove"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            tools:text="Solicitante: Adailson de Almeida dos Santos" />
+    <TextView
+        android:id="@+id/textName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginTop="15dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/textDateInitial"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/fixedTextName"
+        app:layout_constraintTop_toBottomOf="@id/fixedTextRequirement"
+        tools:text="Adailson de Almeida dos Santos" />
 
-        <com.google.android.material.textfield.TextInputLayout
+    <TextView
+        android:id="@+id/fixedTextDateInitial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:text="Data da Solicitação:"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/textDateInitial"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/textDateInitial" />
+
+    <TextView
+        android:id="@+id/textDateInitial"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/textDateFinal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/fixedTextDateInitial"
+        app:layout_constraintTop_toBottomOf="@id/textName"
+        tools:text="01/01/2022" />
+
+    <TextView
+        android:id="@+id/fixedTextDateFinal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:text="Data da Conclusão:"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/textDateFinal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/textDateFinal" />
+
+    <TextView
+        android:id="@+id/textDateFinal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/textTittle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/fixedTextDateFinal"
+        app:layout_constraintTop_toBottomOf="@id/textDateInitial"
+        tools:text="01/01/2022" />
+
+    <TextView
+        android:id="@+id/fixedTextTittle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:text="Titulo:"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/textTittle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/textTittle" />
+
+    <TextView
+        android:id="@+id/textTittle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/textHours"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/fixedTextTittle"
+        app:layout_constraintTop_toBottomOf="@id/textDateFinal"
+        tools:text="Curso de Manutenção de Computadores" />
+
+    <TextView
+        android:id="@+id/fixedTextHours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:text="Carga Horaria:"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/textHours"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/textHours" />
+
+    <TextView
+        android:id="@+id/textHours"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/fixedTextHours"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/fixedTextHours"
+        app:layout_constraintTop_toBottomOf="@id/textTittle"
+        tools:text="4h" />
+
+    <TextView
+        android:id="@+id/fixedTextDateRealization"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:text="Data da Realização:"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/textDateRealization"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/textDateRealization" />
+
+    <TextView
+        android:id="@+id/textDateRealization"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/textInstitution"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/fixedTextDateRealization"
+        app:layout_constraintTop_toBottomOf="@id/textHours"
+        tools:text="01/01/2022" />
+
+    <TextView
+        android:id="@+id/fixedTextInstitution"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:text="Instituição de Origem:"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/textInstitution"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/textInstitution" />
+
+    <TextView
+        android:id="@+id/textInstitution"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/textStatus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/fixedTextInstitution"
+        app:layout_constraintTop_toBottomOf="@id/textDateRealization"
+        tools:text="UNIFACEAR" />
+
+    <TextView
+        android:id="@+id/fixedTextStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:text="Status:"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/textStatus"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/textStatus" />
+
+    <TextView
+        android:id="@+id/textStatus"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/fixedTextStatus"
+        app:layout_constraintTop_toBottomOf="@id/textInstitution"
+        tools:text="Pendente" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/reasonLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="15dp"
+        android:hint="Motivo"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/aprove"
+        app:layout_constraintTop_toBottomOf="@+id/textStatus">
+
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/reason"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="15dp"
-            android:hint="Motivo"
-            app:layout_constraintBottom_toTopOf="@+id/aprove"
-            app:layout_constraintTop_toBottomOf="@+id/student_name"
-            tools:layout_editor_absoluteX="10dp">
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:id="@+id/errorMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reasonLayout"
+        tools:text="Error"
+        tools:visibility="gone" />
 
-        <TextView
-            android:id="@+id/errorMessage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/aprove"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/student_name"
-            tools:visibility="invisible" />
+    <Button
+        android:id="@+id/aprove"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Aprovar"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/reprove"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/reasonLayout" />
 
-        <Button
-            android:id="@+id/aprove"
-            android:layout_width="162dp"
-            android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/reprove"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:backgroundTint="@color/red_error"
+        android:text="Reprovar"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/aprove"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/aprove"
+        app:layout_constraintTop_toTopOf="@+id/aprove" />
 
-            android:text="Aprovar"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/reprove"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/student_name"
-
-            app:layout_constraintVertical_bias="0.835" />
-
-        <Button
-            android:id="@+id/reprove"
-            android:layout_width="162dp"
-            android:layout_height="wrap_content"
-            android:text="Reprovar"
-            app:layout_constraintBottom_toBottomOf="@id/aprove"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.404"
-            app:layout_constraintStart_toEndOf="@id/aprove"
-            android:backgroundTint="@color/red_error"
-            app:layout_constraintTop_toTopOf="@+id/aprove"
-            app:layout_constraintVertical_bias="0.0" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
