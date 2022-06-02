@@ -29,6 +29,13 @@ interface EndpointStudent {
     @GET("student")
     fun getStudents() : Call<List<Student>>
 
+
+    @GET("Query/get_student_by_coordinator/{id}")
+    fun getStudentsByCoordinator(@Path("id") id : Long) : Call<List<Student>>
+
+    @GET("Query/get_student_by_course/{id}")
+    fun getStudentsByCourse(@Path("id") id : Long) : Call<List<Student>>
+
     @GET("student/{id}")
     fun getStudentById(@Path("id") id : Long) : Call<Student>
 

@@ -56,6 +56,12 @@
         <entry key="..\:/Users/adail/Documents/Git/Faculdade/PI_ANDROID/PI/DaHora/app/src/main/res/menu/bottom_studant_menu.xml" value="0.17192982456140352" />
         <entry key="..\:/Users/adail/Documents/Git/Faculdade/PI_ANDROID/PI/DaHora/app/src/main/res/menu/menu_studant.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/adail/Documents/Git/Faculdade/PI_ANDROID/PI/DaHora/app/src/main/res/menu/top_studant_menu.xml" value="0.17192982456140352" />
+        <entry key="..\:/Users/andre/Documents/GitHub/PI_ANDROID_2/PI_ANDROID/PI/DaHora/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.163" />
+        <entry key="..\:/Users/andre/Documents/GitHub/PI_ANDROID_2/PI_ANDROID/PI/DaHora/app/src/main/res/layout/fragment_requeriment_history_studant.xml" value="0.1983695652173913" />
+        <entry key="..\:/Users/andre/Documents/GitHub/PI_ANDROID_2/PI_ANDROID/PI/DaHora/app/src/main/res/layout/fragment_students_list.xml" value="0.1983695652173913" />
+        <entry key="..\:/Users/andre/Documents/GitHub/PI_ANDROID_2/PI_ANDROID/PI/DaHora/app/src/main/res/layout/fragment_view_student.xml" value="0.1983695652173913" />
+        <entry key="..\:/Users/andre/Documents/GitHub/PI_ANDROID_2/PI_ANDROID/PI/DaHora/app/src/main/res/layout/item_requirement.xml" value="0.1983695652173913" />
+        <entry key="..\:/Users/andre/Documents/GitHub/PI_ANDROID_2/PI_ANDROID/PI/DaHora/app/src/main/res/layout/item_student.xml" value="0.33" />
       </map>
     </option>
   </component>
