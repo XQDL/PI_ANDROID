@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.pi.dahora.Models.Course
 import com.pi.dahora.Models.EndpointCourse
+import com.pi.dahora.Models.EndpointStudent
+import com.pi.dahora.Models.Student
 import com.pi.dahora.R
 import com.pi.dahora.databinding.FragmentHomeStudantBinding
 import com.pi.dahora.utils.LoginUser
@@ -40,19 +42,15 @@ class HomeStudantFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getData()
+        getDataStudent()
 
     }
 
 
     private fun getData() {
-
         binding.tvHours.textSize = 24F
         binding.tvHours.text = "Carregando..."
         binding.tvHours.setTextColor(resources.getColor(R.color.green_200))
-
-
-
 
         val retrofitClient = NetworkUtils.getRetrofitInstance("https://apidahora.herokuapp.com/api/")
         val endpoint = retrofitClient.create(EndpointCourse::class.java)
@@ -87,6 +85,43 @@ class HomeStudantFragment : Fragment() {
         })
     }
 
+    private fun getDataStudent() {
+        binding.tvHours.textSize = 24F
+        binding.tvHours.text = "Carregando..."
+        binding.tvHours.setTextColor(resources.getColor(R.color.green_200))
+
+        val retrofitClient = NetworkUtils.getRetrofitInstance("https://apidahora.herokuapp.com/api/")
+        val endpoint = retrofitClient.create(EndpointStudent::class.java)
+
+        val studentId = LoginUser.userLogged.id
+
+        val callback = endpoint.getStudentById(studentId.toLong())
+
+        callback.enqueue(object : Callback<Student> {
+            override fun onFailure(call: Call<Student>, t: Throwable) {
+                binding.tvHours.setTextColor(Color.RED)
+                binding.tvHours.text = "Desculpe, ocorreu um erro interno no servidor!"
+            }
+
+            override fun onResponse(call: Call<Student>, response: Response<Student>) {
+                val erroMensage = when(response.raw().code()){
+                    404 -> "E-mail ou senha inválidos"
+                    500 -> "Desculpe, ocorreu um erro interno no servidor!"
+                    else -> "Ops, ocorreu um erro inesperado!"
+                }
+                showError(erroMensage)
+
+
+                try{
+                    LoginUser.userLogged.additionalHoursPerformed = response.body()?.additionalHoursPerformed!!
+                    getData()
+                } catch(e : Exception){
+                    showError("Problema ao encontrar suas horas complementares!!")
+                }
+            }
+        })
+    }
+
     private fun hourRender() {
         binding.tvHours.textSize = 32F
         binding.tvHours.setTextColor(Color.BLACK)
@@ -108,7 +143,7 @@ class HomeStudantFragment : Fragment() {
         var splited = hour.split(".")
         var formattedHour : String
 
-        if(splited[1] == "0"){
+        if (splited[1] == "0"){
             formattedHour = splited[0]
         } else{
             formattedHour = hour

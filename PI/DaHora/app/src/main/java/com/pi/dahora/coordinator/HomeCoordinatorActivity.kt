@@ -36,6 +36,7 @@ class HomeCoordinatorActivity : AppCompatActivity() {
     }
 
     private fun goHistory() {
+        binding.toolbarCoordinator.title = "Histórico de requerimentos"
         val fragment = RequerimentHistoryCoordinatorFragment()
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragmentContainerView_Coordinator, fragment, "")
@@ -43,6 +44,7 @@ class HomeCoordinatorActivity : AppCompatActivity() {
     }
 
     private fun goHome() {
+        binding.toolbarCoordinator.title = "Lista de alunos"
         val fragment = StudentsListFragment()
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragmentContainerView_Coordinator, fragment, "")
@@ -50,6 +52,7 @@ class HomeCoordinatorActivity : AppCompatActivity() {
     }
 
     private fun goPending() {
+        binding.toolbarCoordinator.title = "Requerimentos pendentes"
         val fragment = RequerimentPendingFragment()
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragmentContainerView_Coordinator, fragment, "")
