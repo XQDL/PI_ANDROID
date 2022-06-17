@@ -14,11 +14,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/textView"
+        app:layout_constraintBottom_toTopOf="@id/profileName"
         style="@style/profile_margin" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/profileName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Adailson Almeida"
@@ -26,16 +26,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imageView"
-        app:layout_constraintBottom_toTopOf="@id/textView4"
+        app:layout_constraintBottom_toTopOf="@id/description"
         style="@style/profile_margin"/>
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Coordenador do Curso Android"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/textView"
+        app:layout_constraintTop_toBottomOf="@id/profileName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/divider001"
@@ -45,12 +45,12 @@
         android:id="@+id/divider001"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/textView4"
-        app:layout_constraintBottom_toTopOf="@id/textView5"
+        app:layout_constraintTop_toBottomOf="@id/description"
+        app:layout_constraintBottom_toTopOf="@id/contact"
         style="@style/profile_margin"/>
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/contact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Contatos"
@@ -59,7 +59,7 @@
         app:layout_constraintTop_toBottomOf="@id/divider001"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/textView2"
+        app:layout_constraintBottom_toTopOf="@id/email"
         style="@style/profile_margin"/>
 
     <ImageView
@@ -68,20 +68,20 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:src="@drawable/ic_baseline_email_24"
-        app:layout_constraintTop_toTopOf="@id/textView2"
-        app:layout_constraintBottom_toBottomOf="@id/textView2"
-        app:layout_constraintEnd_toStartOf="@id/textView2" />
+        app:layout_constraintTop_toTopOf="@id/email"
+        app:layout_constraintBottom_toBottomOf="@id/email"
+        app:layout_constraintEnd_toStartOf="@id/email" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="adailson.up@gmail.com"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/textView5"
+        app:layout_constraintTop_toBottomOf="@id/contact"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/textView3"
+        app:layout_constraintBottom_toTopOf="@id/numberPhone"
         style="@style/profile_margin"/>
 
     <ImageView
@@ -90,12 +90,12 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:src="@drawable/ic_baseline_smartphone_24"
-        app:layout_constraintTop_toTopOf="@id/textView3"
-        app:layout_constraintBottom_toBottomOf="@id/textView3"
-        app:layout_constraintEnd_toStartOf="@id/textView3"/>
+        app:layout_constraintTop_toTopOf="@id/numberPhone"
+        app:layout_constraintBottom_toBottomOf="@id/numberPhone"
+        app:layout_constraintEnd_toStartOf="@id/numberPhone"/>
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/numberPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="(41) 9 9999-9999"
@@ -103,7 +103,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView2"
+        app:layout_constraintTop_toBottomOf="@id/email"
         style="@style/profile_margin"/>
 
 

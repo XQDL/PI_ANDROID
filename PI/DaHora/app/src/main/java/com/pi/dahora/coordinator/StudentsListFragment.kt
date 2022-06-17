@@ -1,22 +1,18 @@
 package com.pi.dahora.coordinator
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.Snackbar
-import com.pi.dahora.Models.EndpointRequirement
 import com.pi.dahora.Models.EndpointStudent
-import com.pi.dahora.Models.Requirement
-import com.pi.dahora.Utils.ItemClickListener
 import com.pi.dahora.Models.Student
-import com.pi.dahora.R
-import com.pi.dahora.RequirementAdpter
+import com.pi.dahora.Utils.ItemClickListener
 import com.pi.dahora.Utils.StudentAdpter
-import com.pi.dahora.ViewRequisitionFragment
-import com.pi.dahora.databinding.FragmentRequerimentHistoryStudantBinding
+import com.pi.dahora.databinding.FragmentCoordinatorProfileBinding
 import com.pi.dahora.databinding.FragmentStudentsListBinding
 import com.pi.dahora.utils.LoginUser
 import com.pi.dahora.utils.NetworkUtils
@@ -32,11 +28,11 @@ class StudentsListFragment : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         binding = FragmentStudentsListBinding.inflate(inflater)
 
         getData()
@@ -51,9 +47,10 @@ class StudentsListFragment : Fragment() {
 
     private fun recycleView(){
         val onClickListener = ItemClickListener{student ->
-            val fragment = ViewStudentFragment(student)
-
-            parentFragmentManager.beginTransaction().replace(R.id.fragmentContainerView_Student, fragment).commit()
+            bottomSheet(student)
+//            val fragment = ViewStudentFragment(student)
+//
+//            parentFragmentManager.beginTransaction().replace(R.id.fragmentContainerView_Student, fragment).commit()
         }
 
         val recyclerView = binding.recycleViewSt
@@ -90,6 +87,21 @@ class StudentsListFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun bottomSheet(student: Student){
+
+        val bottomSheetBinding : FragmentCoordinatorProfileBinding =  FragmentCoordinatorProfileBinding.inflate(layoutInflater)
+
+        val bottomSheetDialog = BottomSheetDialog(requireContext())
+        bottomSheetDialog.setContentView(bottomSheetBinding.root)
+
+        bottomSheetBinding.profileName.text = student.name
+        bottomSheetBinding.description.text = student.course.toString()
+        bottomSheetBinding.email.text = student.email
+        bottomSheetBinding.numberPhone.text = student.password
+
+        bottomSheetDialog.show()
     }
 
 
