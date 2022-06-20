@@ -44,7 +44,7 @@ class ViewRequisitionFragment(requirement: Requirement) : Fragment() {
             textHours.text = formatHour(requirement.workLoad.toString())
             textDateRealization.text = "${dateFormater(requirement.startDate)} - ${dateFormater(requirement.endDate)}"
             textInstitution.text = requirement.institutionName
-            textStatus.text = requirement.type
+            textStatus.text = TimeUtils.toPortugues(requirement.type)
         }
 
 

@@ -68,5 +68,47 @@ class TimeUtils {
             }
             return monthString
         }
+
+        fun formatHour(hour: String): String {
+            var splited = hour.split(".")
+            var formattedHour : String
+
+            if(splited[1] == "0"){
+                formattedHour = splited[0]
+            } else{
+                formattedHour = hour
+            }
+
+            return formattedHour+" Horas"
+        }
+
+        fun dateFormater(date : String): String{
+            var splitedDate = date.split("T")[0].split("-")
+
+            var day = splitedDate[2].toInt()
+            var month = splitedDate[1].toInt()
+            var year = splitedDate[0].toInt()
+
+            return makeDateString(day, month, year)
+        }
+
+        fun toPortugues(type: String): String {
+            when (type) {
+                "approved" -> return "APROVADO"
+                "denied" -> return "REPROVADO"
+                else -> return "CRIADO"
+            }
+        }
+
+        private fun makeDateString(day: Int, month: Int, year: Int): String {
+            return  formatDay(day) + "/" + TimeUtils.getMonthString(month) + "/" + year
+        }
+
+        private fun formatDay(day: Int) : String{
+            if (day < 10){
+                return "0$day"
+            }
+            return day.toString()
+        }
     }
 }
