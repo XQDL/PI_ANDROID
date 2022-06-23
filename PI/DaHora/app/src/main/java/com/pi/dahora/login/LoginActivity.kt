@@ -31,29 +31,22 @@ class LoginActivity : AppCompatActivity() {
         binding.ButtonLogin//.performClick()
     }
 
-    private fun initView(){
+    private fun initView() {
         binding.ButtonLogin.setOnClickListener {
             val email = binding.EditTextEmailLogin.text.toString()
             val password = binding.EditTextPasswordLogin.text.toString()
-            if((email == "") and (password == "")){
-                getData("898989","321")
-
-                //getData("carlos.gouveia@unifacear.com","12345678")
-            }
-            else{
-                getData(email, password)
-            }
+            getData(email, password)
         }
     }
 
-    private fun callHomeStudent(){
+    private fun callHomeStudent() {
         Intent(this, HomeStudantActivity::class.java).apply {
             startActivity(this)
             finish()
         }
     }
 
-    private fun callHomeCoordinator(){
+    private fun callHomeCoordinator() {
         Intent(this, HomeCoordinatorActivity::class.java).apply {
             startActivity(this)
             finish()
@@ -68,24 +61,25 @@ class LoginActivity : AppCompatActivity() {
         binding.TextViewErrorLogin.setTextColor(resources.getColor(R.color.green_200))
         binding.ProgressBarLogin.visibility = View.VISIBLE
 
-        var matricula : String = ""
-        var email : String = ""
+        var matricula: String = ""
+        var email: String = ""
 
         if (login.split("@").size > 1) email = login else matricula = login
 
-        val retrofitClient = NetworkUtils.getRetrofitInstance("https://apidahora.herokuapp.com/api/")
+        val retrofitClient =
+            NetworkUtils.getRetrofitInstance("https://apidahora.herokuapp.com/api/")
         val endpoint = retrofitClient.create(EndpointAuthenticate::class.java)
         val auth = AuthenticateDTO(email, password, matricula)
         val callback = endpoint.authenticate(auth)
 
         callback.enqueue(object : Callback<User> {
             override fun onFailure(call: Call<User>, t: Throwable) {
-               showError("Desculpe, ocorreu um erro interno no servidor!")
+                showError("Desculpe, ocorreu um erro interno no servidor!")
             }
 
             override fun onResponse(call: Call<User>, response: Response<User>) {
 
-                val erroMensage = when(response.raw().code()){
+                val erroMensage = when (response.raw().code()) {
                     200 -> ""
                     404 -> "E-mail ou senha inválidos"
                     500 -> "Desculpe, ocorreu um erro interno no servidor!"
@@ -98,29 +92,27 @@ class LoginActivity : AppCompatActivity() {
 
                 if (user != null) {
                     callHome(user)
-                }
-                else{
+                } else {
                     binding.TextViewErrorLogin.text = "Falha de Login! Tente novamente!"
                 }
             }
         })
     }
 
-    private fun callHome(user: User){
+    private fun callHome(user: User) {
 
         LoginUser.userLogged = user
 
-        if (user.phoneNumber != null){
+        if (user.phoneNumber != null) {
             callHomeCoordinator()
             LoginUser.isCoordinator = true
-        }
-        else {
+        } else {
             callHomeStudent()
             LoginUser.isCoordinator = false
         }
     }
 
-    private fun showError(msg: String){
+    private fun showError(msg: String) {
         binding.TextViewErrorLogin.setTextColor(Color.RED)
         binding.ProgressBarLogin.visibility = View.GONE
         binding.TextViewErrorLogin.text = msg

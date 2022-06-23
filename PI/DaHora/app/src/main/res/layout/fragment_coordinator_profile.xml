@@ -95,6 +95,19 @@
         app:layout_constraintEnd_toStartOf="@id/numberPhone"/>
 
     <TextView
+        android:id="@+id/xqdlDeUltimaHora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:text="Matrícula:"
+        android:visibility="gone"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@id/numberPhone"
+        app:layout_constraintBottom_toBottomOf="@id/numberPhone"
+        app:layout_constraintEnd_toStartOf="@id/numberPhone"/>
+
+    <TextView
         android:id="@+id/numberPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

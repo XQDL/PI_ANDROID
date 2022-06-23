@@ -97,11 +97,23 @@ class StudentsListFragment : Fragment() {
         bottomSheetDialog.setContentView(bottomSheetBinding.root)
 
         bottomSheetBinding.profileName.text = student.name
-        bottomSheetBinding.description.text = student.course.toString()
+        bottomSheetBinding.description.text = curseToID(student.course.toInt())
         bottomSheetBinding.email.text = student.email
-        bottomSheetBinding.numberPhone.text = student.password
+        bottomSheetBinding.imageView3.visibility = View.GONE
+        bottomSheetBinding.xqdlDeUltimaHora.visibility = View.VISIBLE
+        bottomSheetBinding.numberPhone.text = student.register
 
         bottomSheetDialog.show()
+    }
+
+    private fun curseToID(id:Int) : String{
+        when(id) {
+            1 -> return "ANASI"
+            2 -> return "Biomedicina"
+            3 -> return "Direito"
+            4 -> return "Sistema da Informação"
+            else -> return "Curso não encontrado"
+        }
     }
 
 
